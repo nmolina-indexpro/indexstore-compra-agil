@@ -1,5 +1,14 @@
 {
+  "version": 2,
+  "functions": {
+    "api/licitaciones.js": { "runtime": "nodejs20.x", "maxDuration": 30 },
+    "api/proveedor.js":    { "runtime": "nodejs20.x", "maxDuration": 10 },
+    "api/ordenes.js":      { "runtime": "nodejs20.x", "maxDuration": 60 }
+  },
   "rewrites": [
-    { "source": "/(.*)", "destination": "/public/$1" }
+    { "source": "/api/licitaciones", "destination": "/api/licitaciones" },
+    { "source": "/api/proveedor",    "destination": "/api/proveedor" },
+    { "source": "/api/ordenes",      "destination": "/api/ordenes" },
+    { "source": "/(.*)",             "destination": "/public/index.html" }
   ]
 }
