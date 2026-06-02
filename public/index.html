@@ -463,7 +463,8 @@ footer {
           <select id="filter-fecha" onchange="toggleDateInput()">
             <option value="hoy">Publicadas hoy</option>
             <option value="ayer">Ayer</option>
-            <option value="2dias">Últimos 2 días</option>
+            <option value="2dias" selected>Últimos 2 días</option>
+            <option value="semana">Última semana (7 días)</option>
             <option value="manual">Fecha específica</option>
           </select>
         </div>
@@ -728,6 +729,33 @@ function updateStats() {
 }
 
 // ── Fetch ─────────────────────────────────────────────────────
+
+// Genera array de fechas según el período seleccionado
+function getFechasRango() {
+  const v = document.getElementById('filter-fecha').value;
+  if (v === 'hoy')   return [toMPDate(new Date())];
+  if (v === 'ayer')  return [toMPDate(offsetDate(1))];
+  if (v === '2dias') return [toMPDate(new Date()), toMPDate(offsetDate(1))];
+  if (v === 'semana') return Array.from({length:7}, (_,i) => toMPDate(offsetDate(i)));
+  if (v === 'manual') {
+    const val = document.getElementById('filter-date').value;
+    if (!val) return [toMPDate(new Date())];
+    const [y,m,d] = val.split('-');
+    return [`${d}${m}${y}`];
+  }
+  return [toMPDate(new Date())];
+}
+
+async function fetchFecha(fecha, q, estado) {
+  const params = new URLSearchParams({ fecha });
+  if (estado !== 'todos') params.set('estado', estado);
+  if (q) params.set('q', q);
+  const resp = await fetch(`${API_BASE}?${params}`, { signal: AbortSignal.timeout(15000) });
+  if (!resp.ok) return [];
+  const data = await resp.json();
+  return data.Listado || [];
+}
+
 async function doSearch() {
   const btn = document.getElementById('btn-search');
   btn.disabled = true;
@@ -738,33 +766,31 @@ async function doSearch() {
     <div class="state-box">
       <div class="spinner"></div>
       <div class="state-title">Consultando Mercado Público…</div>
-      <div class="state-sub">Conectando con la API de ChileCompra a través del proxy seguro.</div>
+      <div class="state-sub">Buscando en múltiples fechas para traerte más oportunidades.</div>
     </div>`;
   document.getElementById('pagination-area').innerHTML = '';
 
   const q      = document.getElementById('search-input').value.trim();
   const estado = document.getElementById('filter-estado').value;
-  const fecha  = getFecha();
-
-  const params = new URLSearchParams({ fecha });
-  if (estado !== 'todos') params.set('estado', estado);
-  if (q) params.set('q', q);
+  const fechas = getFechasRango();
 
   try {
-    const resp = await fetch(`${API_BASE}?${params}`, { signal: AbortSignal.timeout(15000) });
+    // Buscar en todas las fechas del rango en paralelo
+    const resultados = await Promise.all(fechas.map(f => fetchFecha(f, q, estado)));
 
-    if (!resp.ok) {
-      const err = await resp.json().catch(() => ({}));
-      throw new Error(err.error || `HTTP ${resp.status}`);
-    }
+    // Unir y deduplicar por CodigoLicitacion
+    const seen = new Set();
+    allResults = resultados.flat().filter(r => {
+      const id = r.CodigoLicitacion || r.Codigo || JSON.stringify(r.Nombre);
+      if (seen.has(id)) return false;
+      seen.add(id);
+      return true;
+    });
 
-    const data = await resp.json();
-    allResults = data.Listado || [];
-
-    // Filtrado adicional por keywords si no hubo q libre
+    // Filtrar por keywords si no hay búsqueda libre
     if (!q && keywords.length > 0) {
       filtered = allResults.filter(r => kwMatch(r));
-      if (!filtered.length) filtered = allResults; // fallback: mostrar todo
+      if (!filtered.length) filtered = allResults;
     } else {
       filtered = allResults;
     }
@@ -776,13 +802,13 @@ async function doSearch() {
   } catch (err) {
     document.getElementById('error-area').innerHTML = `
       <div class="error-bar">
-        ⚠️ <strong>Error:</strong> ${err.message}. Verifica que el servidor Vercel esté desplegado.
+        ⚠️ <strong>Error:</strong> ${err.message}
       </div>`;
     document.getElementById('results-area').innerHTML = `
       <div class="state-box">
         <div class="state-icon">⚡</div>
         <div class="state-title">No se pudo conectar</div>
-        <div class="state-sub">El servidor proxy no respondió. Asegúrate de haber desplegado el proyecto en Vercel y de tener conexión.</div>
+        <div class="state-sub">El servidor proxy no respondió. Intenta nuevamente.</div>
       </div>`;
     document.getElementById('stat-total').textContent = '—';
     document.getElementById('stat-match').textContent = '—';
@@ -794,15 +820,14 @@ async function doSearch() {
 }
 
 // ── Init ─────────────────────────────────────────────────────
-document.getElementById('footer-date').textContent = new Date().toLocaleDateString('es-CL', {
-  day: '2-digit', month: 'long', year: 'numeric'
-});
-
-renderChips();
-
-// Enter en buscador
-document.getElementById('search-input').addEventListener('keydown', e => {
-  if (e.key === 'Enter') doSearch();
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('footer-date').textContent = new Date().toLocaleDateString('es-CL', {
+    day: '2-digit', month: 'long', year: 'numeric'
+  });
+  renderChips();
+  document.getElementById('search-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doSearch();
+  });
 });
 </script>
 </body>
