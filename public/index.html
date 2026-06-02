@@ -5,45 +5,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IndexStore — Portal Compra Ágil</title>
 <meta name="robots" content="noindex,nofollow">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-:root {
-  --navy:#0d2137;--navy2:#1a3a56;--accent:#0ea5e9;--accent2:#38bdf8;
-  --success:#22c55e;--warn:#f59e0b;--danger:#ef4444;--purple:#7c3aed;
-  --bg:#f0f4f8;--surface:#fff;--surface2:#f8fafc;
-  --border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.13);
-  --text:#0d2137;--text2:#4a6580;--text3:#8aa0b4;
-  --mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;
-  --r:10px;--r-lg:14px;
-  --shadow:0 1px 3px rgba(13,33,55,0.08),0 4px 16px rgba(13,33,55,0.06);
-  --shadow-sm:0 1px 2px rgba(13,33,55,0.06);
-}
+:root{--navy:#0d2137;--navy2:#1a3a56;--accent:#0ea5e9;--accent2:#38bdf8;--success:#22c55e;--warn:#f59e0b;--danger:#ef4444;--purple:#7c3aed;--bg:#f0f4f8;--surface:#fff;--surface2:#f8fafc;--border:rgba(0,0,0,0.08);--text:#0d2137;--text2:#4a6580;--text3:#8aa0b4;--mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;--r:10px;--r-lg:14px;--shadow:0 1px 3px rgba(13,33,55,.08),0 4px 16px rgba(13,33,55,.06);--shadow-sm:0 1px 2px rgba(13,33,55,.06)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;font-size:15px;line-height:1.6}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;font-size:15px}
 
-/* ── Header ── */
-.header{background:var(--navy);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:54px;position:sticky;top:0;z-index:200;border-bottom:1px solid rgba(255,255,255,0.06)}
-.header-left{display:flex;align-items:center;gap:12px}
-.logo-dot{width:8px;height:8px;background:var(--accent);border-radius:50%;animation:pulse 2s ease-in-out infinite;flex-shrink:0}
+/* HEADER */
+.hdr{background:var(--navy);padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:54px;position:sticky;top:0;z-index:200}
+.hdr-l{display:flex;align-items:center;gap:12px}
+.dot{width:8px;height:8px;background:var(--accent2);border-radius:50%;animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
-.header-title{font-size:15px;font-weight:600;color:#fff;letter-spacing:-.2px}
-.header-sub{font-size:11px;color:rgba(255,255,255,0.45)}
-.api-pill{font-family:var(--mono);font-size:10px;color:var(--accent2);background:rgba(14,165,233,0.12);border:1px solid rgba(14,165,233,0.25);border-radius:20px;padding:3px 10px;display:flex;align-items:center;gap:5px}
+.hdr-title{font-size:15px;font-weight:600;color:#fff}
+.hdr-sub{font-size:11px;color:rgba(255,255,255,.45)}
+.api-pill{font-family:var(--mono);font-size:10px;color:var(--accent2);background:rgba(14,165,233,.12);border:1px solid rgba(14,165,233,.25);border-radius:20px;padding:3px 10px;display:flex;align-items:center;gap:5px}
 .api-pill::before{content:'';width:6px;height:6px;background:var(--accent2);border-radius:50%}
 
-/* ── Nav ── */
-.nav{background:var(--navy2);border-bottom:1px solid rgba(255,255,255,0.08);display:flex;gap:2px;padding:0 1.5rem}
-.nav-btn{font-family:var(--sans);font-size:13px;font-weight:500;color:rgba(255,255,255,0.55);background:transparent;border:none;padding:10px 14px;cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;display:flex;align-items:center;gap:6px;white-space:nowrap}
-.nav-btn:hover{color:rgba(255,255,255,0.85)}
+/* NAV */
+.nav{background:var(--navy2);display:flex;gap:2px;padding:0 1.5rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-btn{font-family:var(--sans);font-size:13px;font-weight:500;color:rgba(255,255,255,.55);background:transparent;border:none;border-bottom:2px solid transparent;padding:10px 14px;cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap;transition:all .15s}
+.nav-btn:hover{color:rgba(255,255,255,.85)}
 .nav-btn.active{color:#fff;border-bottom-color:var(--accent)}
 .nav-btn svg{width:14px;height:14px;opacity:.7}
 
-/* ── Pages ── */
+/* PAGES */
 .page{display:none}.page.active{display:block}
 
-/* ── Layout oportunidades ── */
+/* LAYOUT */
 .layout{display:grid;grid-template-columns:290px 1fr;gap:1.25rem;max-width:1200px;margin:0 auto;padding:1.25rem;align-items:start}
 .sidebar{display:flex;flex-direction:column;gap:1rem;position:sticky;top:110px}
 @media(max-width:780px){
@@ -51,239 +40,212 @@ body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:1
   .sidebar{position:static;top:auto}
 }
 
-/* ── Panels ── */
+/* PANELS */
 .panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow-sm);overflow:hidden}
-.panel-head{padding:.7rem 1rem;border-bottom:1px solid var(--border);font-size:11px;font-weight:600;color:var(--text2);letter-spacing:.6px;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between}
-.panel-body{padding:1rem}
+.panel-hd{padding:.7rem 1rem;border-bottom:1px solid var(--border);font-size:11px;font-weight:600;color:var(--text2);letter-spacing:.6px;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between}
+.panel-bd{padding:1rem}
 
-/* ── Chips ── */
-.kw-chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+/* CHIPS */
+.chips-wrap{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
 .chip{font-size:11px;font-weight:500;background:#e0f2fe;color:#0369a1;border:1px solid #bae6fd;border-radius:20px;padding:3px 8px;cursor:pointer;display:flex;align-items:center;gap:4px;transition:all .15s}
 .chip:hover{background:#fee2e2;color:#b91c1c;border-color:#fca5a5}
 .kw-add{display:flex;gap:6px;margin-top:4px}
-.kw-add input{flex:1;font-size:12px;font-family:var(--sans);border:1px solid var(--border);border-radius:var(--r);padding:5px 8px;background:var(--surface2);color:var(--text);outline:none;transition:border-color .15s}
+.kw-add input{flex:1;font-size:12px;font-family:var(--sans);border:1px solid var(--border);border-radius:var(--r);padding:5px 8px;background:var(--surface2);color:var(--text);outline:none}
 .kw-add input:focus{border-color:var(--accent)}
-.kw-add button{font-size:12px;font-family:var(--sans);background:var(--navy2);color:#fff;border:none;border-radius:var(--r);padding:5px 10px;cursor:pointer;transition:opacity .15s}
-.kw-add button:hover{opacity:.8}
+.kw-add button{font-size:12px;font-family:var(--sans);background:var(--navy2);color:#fff;border:none;border-radius:var(--r);padding:5px 10px;cursor:pointer}
 
-/* ── Filters ── */
-.filter-group{margin-bottom:12px}
-.filter-group:last-child{margin-bottom:0}
-.filter-label{font-size:11px;font-weight:500;color:var(--text2);margin-bottom:5px;letter-spacing:.3px}
-.filter-group select,.filter-group input[type=text],.filter-group input[type=date]{width:100%;font-size:13px;font-family:var(--sans);border:1px solid var(--border);border-radius:var(--r);padding:7px 10px;background:var(--surface2);color:var(--text);outline:none;transition:border-color .15s;appearance:none}
-.filter-group select:focus,.filter-group input:focus{border-color:var(--accent)}
+/* FILTERS */
+.fg{margin-bottom:12px}
+.fg:last-child{margin-bottom:0}
+.fl{font-size:11px;font-weight:500;color:var(--text2);margin-bottom:5px;letter-spacing:.3px}
+.fg select,.fg input{width:100%;font-size:13px;font-family:var(--sans);border:1px solid var(--border);border-radius:var(--r);padding:7px 10px;background:var(--surface2);color:var(--text);outline:none;appearance:none}
+.fg select:focus,.fg input:focus{border-color:var(--accent)}
+.btn-search{width:100%;padding:10px;background:var(--accent);color:#fff;border:none;border-radius:var(--r);font-size:14px;font-weight:600;font-family:var(--sans);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:opacity .15s}
+.btn-search:hover{opacity:.88}.btn-search:disabled{opacity:.5;cursor:not-allowed}
+.utm{font-size:11px;color:var(--text3);margin-top:6px;text-align:center}
 
-/* ── Stats mini ── */
+/* MINI STATS */
 .mini-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
-.mini-stat{background:var(--surface2);border-radius:var(--r);padding:8px;text-align:center;border:1px solid var(--border)}
-.mini-stat-val{font-size:20px;font-weight:600;line-height:1}
-.mini-stat-val.blue{color:var(--accent)}.mini-stat-val.green{color:var(--success)}.mini-stat-val.amber{color:var(--warn)}
-.mini-stat-label{font-size:10px;color:var(--text3);margin-top:3px;line-height:1.3}
+.ms{background:var(--surface2);border-radius:var(--r);padding:8px;text-align:center;border:1px solid var(--border)}
+.ms-val{font-size:20px;font-weight:600;line-height:1}
+.ms-val.blue{color:var(--accent)}.ms-val.green{color:var(--success)}.ms-val.amber{color:var(--warn)}
+.ms-lbl{font-size:10px;color:var(--text3);margin-top:3px;line-height:1.3}
 
-/* ── Search btn ── */
-.btn-search{width:100%;padding:10px;background:var(--accent);color:#fff;border:none;border-radius:var(--r);font-size:14px;font-weight:600;font-family:var(--sans);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .15s}
-.btn-search:hover{background:#0284c7}.btn-search:active{transform:scale(0.98)}.btn-search:disabled{opacity:.5;cursor:not-allowed;transform:none}
-.utm-note{font-size:11px;color:var(--text3);margin-top:6px;text-align:center}
-
-/* ── Results header ── */
-.results-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.results-title{font-size:13px;font-weight:600;color:var(--text2);letter-spacing:.3px;text-transform:uppercase}
-.results-count{font-size:12px;color:var(--text3);font-family:var(--mono)}
-.results-list{display:flex;flex-direction:column;gap:8px}
-
-/* ── Result card ── */
-.result-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1rem 1.125rem;box-shadow:var(--shadow-sm);transition:border-color .15s,box-shadow .15s;animation:fadeUp .25s ease both}
-.result-card:hover{border-color:var(--accent);box-shadow:var(--shadow)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.result-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px}
-.result-name{font-size:13px;font-weight:500;line-height:1.45;color:var(--text);flex:1}
-.result-monto{font-family:var(--mono);font-size:13px;font-weight:500;color:#0369a1;white-space:nowrap;background:#e0f2fe;border:1px solid #bae6fd;border-radius:6px;padding:3px 10px;align-self:flex-start}
-.result-monto-nd{background:var(--surface2);border-color:var(--border);color:var(--text3);font-size:11px}
-.result-detail-row{display:flex;flex-wrap:wrap;gap:5px 18px;margin-bottom:8px;padding:7px 10px;background:var(--surface2);border-radius:8px;border:1px solid var(--border)}
-.result-detail-item{display:flex;align-items:baseline;gap:5px}
-.detail-label{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}
-.detail-val{font-size:12px;color:var(--text2)}
-.detail-val.mono{font-family:var(--mono);color:#0369a1;font-size:11px;background:#e0f2fe;padding:1px 6px;border-radius:4px}
-.result-tags{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
-.tag{font-size:10px;font-weight:500;border-radius:4px;padding:2px 7px;border:1px solid;white-space:nowrap;display:inline-flex;align-items:center;gap:3px}
+/* RESULTS */
+.res-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.res-title{font-size:13px;font-weight:600;color:var(--text2);letter-spacing:.3px;text-transform:uppercase}
+.res-count{font-size:12px;color:var(--text3);font-family:var(--mono)}
+.res-list{display:flex;flex-direction:column;gap:8px}
+.rcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1rem 1.125rem;box-shadow:var(--shadow-sm);transition:border-color .15s;animation:fup .25s ease both}
+.rcard:hover{border-color:var(--accent)}
+@keyframes fup{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.rtop{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:8px}
+.rname{font-size:13px;font-weight:500;line-height:1.45;flex:1}
+.rmonto{font-family:var(--mono);font-size:12px;font-weight:500;color:#0369a1;background:#e0f2fe;border:1px solid #bae6fd;border-radius:6px;padding:3px 9px;align-self:flex-start;white-space:nowrap}
+.rmonto-nd{background:var(--surface2);border-color:var(--border);color:var(--text3);font-size:11px}
+.rdet{display:flex;flex-wrap:wrap;gap:5px 16px;margin-bottom:8px;padding:7px 10px;background:var(--surface2);border-radius:8px;border:1px solid var(--border)}
+.rdet-item{display:flex;align-items:baseline;gap:4px}
+.rdet-k{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.4px;white-space:nowrap}
+.rdet-v{font-size:12px;color:var(--text2)}
+.rdet-v.mono{font-family:var(--mono);color:#0369a1;font-size:11px;background:#e0f2fe;padding:1px 6px;border-radius:4px}
+.rtags{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.tag{font-size:10px;font-weight:500;border-radius:4px;padding:2px 7px;border:1px solid;white-space:nowrap}
 .tag-match{background:#dcfce7;color:#166534;border-color:#86efac}
 .tag-hot{background:#fef9c3;color:#854d0e;border-color:#fde047}
-.tag-new{background:var(--navy);color:#fff;border-color:var(--navy);font-size:9px;letter-spacing:.5px}
+.tag-new{background:var(--navy);color:#fff;border-color:var(--navy);font-size:9px}
 .btn-mp{margin-left:auto;font-size:11px;font-family:var(--sans);font-weight:500;color:var(--accent);background:transparent;border:1px solid var(--accent);border-radius:6px;padding:3px 10px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:4px;transition:all .15s}
 .btn-mp:hover{background:var(--accent);color:#fff}
 .btn-mp svg{width:10px;height:10px}
 
-/* ── State boxes ── */
+/* STATE & SPINNER */
 .state-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:3rem 2rem;text-align:center;box-shadow:var(--shadow-sm)}
-.state-icon{font-size:36px;margin-bottom:12px;opacity:.35}
-.state-title{font-size:15px;font-weight:600;margin-bottom:6px}
-.state-sub{font-size:13px;color:var(--text2);max-width:320px;margin:0 auto}
+.si{font-size:36px;margin-bottom:12px;opacity:.35}
+.st{font-size:15px;font-weight:600;margin-bottom:6px}
+.ss{font-size:13px;color:var(--text2);max-width:320px;margin:0 auto}
 .spinner{width:32px;height:32px;border:2.5px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .6s linear infinite;margin:0 auto 12px}
 @keyframes spin{to{transform:rotate(360deg)}}
+.error-bar{background:#fef2f2;border:1px solid #fca5a5;border-radius:var(--r);color:#b91c1c;font-size:12px;padding:.6rem 1rem;margin-bottom:.75rem}
 
-/* ── Pagination ── */
+/* PAGINATION */
 .pagination{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:1.25rem;flex-wrap:wrap}
-.page-btn{min-width:34px;height:34px;border:1px solid var(--border);border-radius:var(--r);background:var(--surface);color:var(--text2);font-size:13px;font-family:var(--sans);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0 8px;transition:all .15s}
-.page-btn:hover{border-color:var(--accent);color:var(--accent)}
-.page-btn.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.pb{min-width:34px;height:34px;border:1px solid var(--border);border-radius:var(--r);background:var(--surface);color:var(--text2);font-size:13px;font-family:var(--sans);cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0 8px;transition:all .15s}
+.pb:hover{border-color:var(--accent);color:var(--accent)}
+.pb.active{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
 
-/* ── Error ── */
-.error-bar{background:#fef2f2;border:1px solid #fca5a5;border-radius:var(--r);color:#b91c1c;font-size:12px;padding:.6rem 1rem;margin-bottom:.75rem;display:flex;align-items:center;gap:8px}
-
-/* ── Dashboard page ── */
-.dash-wrap{max-width:1100px;margin:0 auto;padding:1.25rem}
-.dash-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:1.5rem}
-.kpi-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1rem 1.25rem;box-shadow:var(--shadow-sm)}
-.kpi-label{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+/* DASHBOARD */
+.dw{max-width:1100px;margin:0 auto;padding:1.25rem}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:1.5rem}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1rem 1.25rem;box-shadow:var(--shadow-sm)}
+.kpi-lbl{font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
 .kpi-val{font-size:26px;font-weight:600;line-height:1;margin-bottom:2px}
 .kpi-sub{font-size:11px;color:var(--text3)}
 .kpi-val.blue{color:var(--accent)}.kpi-val.green{color:var(--success)}.kpi-val.amber{color:var(--warn)}.kpi-val.purple{color:var(--purple)}
 .dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.5rem}
 @media(max-width:700px){.dash-grid{grid-template-columns:1fr}}
 .chart-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.125rem;box-shadow:var(--shadow-sm)}
-.chart-title{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:1rem;letter-spacing:.2px}
+.chart-title{font-size:13px;font-weight:600;color:var(--text2);margin-bottom:1rem}
 .chart-wrap{position:relative;height:200px}
-.ganadas-list{display:flex;flex-direction:column;gap:7px}
-.ganada-row{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--surface2);border-radius:8px;border:1px solid var(--border);font-size:12px;gap:10px}
-.ganada-nombre{flex:1;font-weight:500;color:var(--text);line-height:1.3}
-.ganada-monto{font-family:var(--mono);font-size:11px;color:#0369a1;white-space:nowrap;background:#e0f2fe;padding:2px 8px;border-radius:4px}
-.ganada-fecha{font-size:10px;color:var(--text3);white-space:nowrap}
-.empty-dash{text-align:center;padding:2rem;color:var(--text3);font-size:13px}
+.sec-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
+.sec-title{font-size:15px;font-weight:600}
+.sec-sub{font-size:12px;color:var(--text3);margin-top:1px}
+.btn-add{font-size:12px;background:var(--success);color:#fff;border:none;border-radius:var(--r);padding:6px 14px;cursor:pointer;font-family:var(--sans);font-weight:500}
+.gl{display:flex;flex-direction:column;gap:7px}
+.gr{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:var(--surface2);border-radius:8px;border:1px solid var(--border);font-size:12px;gap:10px}
+.gn{flex:1;font-weight:500;line-height:1.3}
+.gm{font-family:var(--mono);font-size:11px;color:#0369a1;background:#e0f2fe;padding:2px 8px;border-radius:4px;white-space:nowrap}
+.gf{font-size:10px;color:var(--text3);white-space:nowrap}
+.empty-d{text-align:center;padding:2rem;color:var(--text3);font-size:13px}
+.info-box{background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:12px 16px;font-size:12px;color:#1e40af;margin-bottom:1rem;display:flex;gap:10px;align-items:flex-start}
 
-/* ── Competidores page ── */
-.comp-wrap{max-width:1100px;margin:0 auto;padding:1.25rem}
-.comp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.25rem;margin-bottom:1.5rem}
-.comp-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.25rem;box-shadow:var(--shadow-sm)}
-.comp-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
-.comp-avatar{width:42px;height:42px;border-radius:10px;background:var(--navy2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0}
-.comp-razon{font-size:14px;font-weight:600;color:var(--text);line-height:1.2}
-.comp-fantasia{font-size:11px;color:var(--text3);margin-top:1px}
-.habil-badge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;background:#dcfce7;color:#166534;border:1px solid #86efac;display:inline-flex;align-items:center;gap:4px}
-.comp-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
-.comp-stat{background:var(--surface2);border-radius:8px;padding:8px 10px;border:1px solid var(--border)}
-.comp-stat-label{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.4px;margin-bottom:2px}
-.comp-stat-val{font-size:15px;font-weight:600;color:var(--text)}
-.comp-stat-val.green{color:var(--success)}.comp-stat-val.blue{color:var(--accent)}
-.comp-meta{display:flex;flex-direction:column;gap:4px}
-.comp-meta-row{display:flex;gap:8px;font-size:11px}
-.comp-meta-key{color:var(--text3);min-width:80px;flex-shrink:0}
-.comp-meta-val{color:var(--text2)}
-.comp-footer{margin-top:12px;padding-top:12px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
-.btn-ver-mp{font-size:11px;font-family:var(--sans);color:var(--accent);background:transparent;border:1px solid var(--accent);border-radius:6px;padding:4px 12px;cursor:pointer;text-decoration:none;transition:all .15s}
-.btn-ver-mp:hover{background:var(--accent);color:#fff}
-.score-bar{display:flex;align-items:center;gap:8px}
-.score-label{font-size:11px;color:var(--text3)}
-.score-dots{display:flex;gap:3px}
-.score-dot{width:8px;height:8px;border-radius:50%;background:var(--border)}
-.score-dot.on{background:var(--success)}
-.comp-insight{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:8px 12px;font-size:11px;color:#92400e;margin-top:10px}
+/* COMPETIDORES */
+.cw{max-width:1100px;margin:0 auto;padding:1.25rem}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem;margin-bottom:1.5rem}
+.ccard{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:1.25rem;box-shadow:var(--shadow-sm)}
+.chdr{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.cav{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0}
+.craz{font-size:14px;font-weight:600;line-height:1.2}
+.cfant{font-size:11px;color:var(--text3);margin-top:1px}
+.hbadge{font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;background:#dcfce7;color:#166534;border:1px solid #86efac;display:inline-flex;align-items:center;gap:4px}
+.cstats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.cstat{background:var(--surface2);border-radius:8px;padding:8px 10px;border:1px solid var(--border)}
+.cstat-lbl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.4px;margin-bottom:3px}
+.cstat-val{font-size:15px;font-weight:600}
+.cstat-val.green{color:var(--success)}.cstat-val.blue{color:var(--accent)}.cstat-val.mono{font-family:var(--mono);font-size:12px;color:var(--text)}
+.cmeta{display:flex;flex-direction:column;gap:4px}
+.cmr{display:flex;gap:8px;font-size:11px}
+.cmk{color:var(--text3);min-width:80px;flex-shrink:0}
+.cmv{color:var(--text2)}
+.cins{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:8px 12px;font-size:11px;color:#92400e;margin-top:10px}
+.cftr{margin-top:12px;padding-top:12px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.sdots{display:flex;gap:3px}
+.sdot{width:8px;height:8px;border-radius:50%;background:var(--border)}
+.sdot.on{background:var(--success)}
+.slbl{font-size:11px;color:var(--text3)}
+.btn-vmp{font-size:11px;font-family:var(--sans);color:var(--accent);background:transparent;border:1px solid var(--accent);border-radius:6px;padding:4px 12px;cursor:pointer;text-decoration:none;transition:all .15s}
+.btn-vmp:hover{background:var(--accent);color:#fff}
 
-/* ── Section header ── */
-.section-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
-.section-title{font-size:15px;font-weight:600;color:var(--text)}
-.section-sub{font-size:12px;color:var(--text3);margin-top:1px}
-.add-ganada-btn{font-size:12px;background:var(--success);color:#fff;border:none;border-radius:var(--r);padding:6px 14px;cursor:pointer;font-family:var(--sans);font-weight:500;transition:opacity .15s}
-.add-ganada-btn:hover{opacity:.85}
+/* MODAL */
+.mbg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:500;align-items:center;justify-content:center}
+.mbg.open{display:flex}
+.modal{background:var(--surface);border-radius:var(--r-lg);padding:1.5rem;width:100%;max-width:480px;margin:1rem;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.mttl{font-size:15px;font-weight:600;margin-bottom:1rem}
+.mf{margin-bottom:12px}
+.ml{font-size:12px;font-weight:500;color:var(--text2);margin-bottom:4px}
+.mi{width:100%;font-size:13px;font-family:var(--sans);border:1px solid var(--border);border-radius:var(--r);padding:8px 10px;outline:none;background:var(--surface2);color:var(--text)}
+.mi:focus{border-color:var(--accent)}
+.mrow{display:flex;gap:8px;justify-content:flex-end;margin-top:1rem}
+.mcancel{font-size:13px;font-family:var(--sans);background:transparent;border:1px solid var(--border);border-radius:var(--r);padding:7px 16px;cursor:pointer;color:var(--text2)}
+.msave{font-size:13px;font-family:var(--sans);background:var(--accent);color:#fff;border:none;border-radius:var(--r);padding:7px 16px;cursor:pointer;font-weight:500}
 
-/* ── Modal ── */
-.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:500;align-items:center;justify-content:center}
-.modal-bg.open{display:flex}
-.modal{background:var(--surface);border-radius:var(--r-lg);padding:1.5rem;width:100%;max-width:480px;margin:1rem;box-shadow:0 20px 60px rgba(0,0,0,0.2)}
-.modal-title{font-size:15px;font-weight:600;margin-bottom:1rem}
-.modal-field{margin-bottom:12px}
-.modal-label{font-size:12px;font-weight:500;color:var(--text2);margin-bottom:4px}
-.modal-input{width:100%;font-size:13px;font-family:var(--sans);border:1px solid var(--border);border-radius:var(--r);padding:8px 10px;outline:none;background:var(--surface2);color:var(--text);transition:border-color .15s}
-.modal-input:focus{border-color:var(--accent)}
-.modal-row{display:flex;gap:8px;justify-content:flex-end;margin-top:1rem}
-.modal-cancel{font-size:13px;font-family:var(--sans);background:transparent;border:1px solid var(--border);border-radius:var(--r);padding:7px 16px;cursor:pointer;color:var(--text2)}
-.modal-save{font-size:13px;font-family:var(--sans);background:var(--accent);color:#fff;border:none;border-radius:var(--r);padding:7px 16px;cursor:pointer;font-weight:500}
-
-/* ── Footer ── */
 footer{text-align:center;padding:1.5rem;font-size:11px;color:var(--text3);border-top:1px solid var(--border);margin-top:1.5rem;font-family:var(--mono)}
 </style>
 </head>
 <body>
 
-<header class="header">
-  <div class="header-left">
-    <div class="logo-dot"></div>
+<header class="hdr">
+  <div class="hdr-l">
+    <div class="dot"></div>
     <div>
-      <div class="header-title">IndexStore · Compra Ágil</div>
-      <div class="header-sub">Portal interno — Mercado Público ChileCompra</div>
+      <div class="hdr-title">IndexStore · Compra Ágil</div>
+      <div class="hdr-sub">Portal interno — Mercado Público ChileCompra</div>
     </div>
   </div>
   <div class="api-pill">API activa · Vercel</div>
 </header>
 
 <nav class="nav">
-  <button class="nav-btn active" onclick="showPage('oportunidades',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    Oportunidades
+  <button class="nav-btn active" id="nav-oportunidades" onclick="showPage('oportunidades')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>Oportunidades
   </button>
-  <button class="nav-btn" onclick="showPage('dashboard',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-    Mis ventas
+  <button class="nav-btn" id="nav-dashboard" onclick="showPage('dashboard')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>Mis ventas
   </button>
-  <button class="nav-btn" onclick="showPage('competidores',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-    Competidores
+  <button class="nav-btn" id="nav-competidores" onclick="showPage('competidores')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Competidores
   </button>
 </nav>
 
-<!-- ════════════════════════════════════════
-     PAGE: OPORTUNIDADES
-════════════════════════════════════════ -->
+<!-- PAGE OPORTUNIDADES -->
 <div id="page-oportunidades" class="page active">
 <div class="layout">
   <aside class="sidebar">
 
-    <!-- Filters primero -->
+    <!-- 1. FILTROS primero -->
     <div class="panel">
-      <div class="panel-head">Filtros de búsqueda</div>
-      <div class="panel-body">
-        <div class="filter-group">
-          <div class="filter-label">Búsqueda libre</div>
-          <input type="text" id="search-input" placeholder="Ej: cargador HP, pantalla 15.6..."/>
-        </div>
-        <div class="filter-group">
-          <div class="filter-label">Período</div>
-          <select id="filter-fecha" onchange="toggleDateInput()">
+      <div class="panel-hd">Filtros de búsqueda</div>
+      <div class="panel-bd">
+        <div class="fg"><div class="fl">Búsqueda libre</div>
+          <input type="text" id="search-input" placeholder="Ej: cargador HP, pantalla 15.6..."/></div>
+        <div class="fg"><div class="fl">Período</div>
+          <select id="filter-fecha" onchange="toggleDate()">
             <option value="hoy">Publicadas hoy</option>
             <option value="ayer">Ayer</option>
             <option value="2dias" selected>Últimos 2 días</option>
             <option value="semana">Última semana (7 días)</option>
             <option value="manual">Fecha específica</option>
-          </select>
-        </div>
-        <div class="filter-group" id="date-picker-group" style="display:none">
-          <div class="filter-label">Fecha</div>
-          <input type="date" id="filter-date"/>
-        </div>
-        <div class="filter-group">
-          <div class="filter-label">Estado licitación</div>
+          </select></div>
+        <div class="fg" id="dpg" style="display:none"><div class="fl">Fecha</div>
+          <input type="date" id="filter-date"/></div>
+        <div class="fg"><div class="fl">Estado licitación</div>
           <select id="filter-estado">
             <option value="todos">Todos los estados</option>
             <option value="publicada">Publicada</option>
             <option value="cerrada">Cerrada</option>
             <option value="adjudicada">Adjudicada</option>
-          </select>
-        </div>
+          </select></div>
         <button class="btn-search" id="btn-search" onclick="doSearch()">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
           Buscar oportunidades
         </button>
-        <div class="utm-note">Compras hasta 100 UTM ≈ $6,7M</div>
+        <div class="utm">Compras hasta 100 UTM ≈ $6,7M</div>
       </div>
     </div>
 
-    <!-- Keywords debajo -->
+    <!-- 2. PALABRAS CLAVE debajo -->
     <div class="panel">
-      <div class="panel-head">
-        <span>Palabras clave</span>
-        <span id="kw-count" style="color:var(--accent);font-family:var(--mono)">0 activas</span>
-      </div>
-      <div class="panel-body">
-        <div class="kw-chips" id="chips"></div>
+      <div class="panel-hd"><span>Palabras clave</span><span id="kw-count" style="color:var(--accent);font-family:var(--mono)">0 activas</span></div>
+      <div class="panel-bd">
+        <div class="chips-wrap" id="chips"></div>
         <div class="kw-add">
           <input type="text" id="kw-input" placeholder="Nueva palabra clave..." maxlength="40"/>
           <button onclick="addKw()">+ Agregar</button>
@@ -291,463 +253,277 @@ footer{text-align:center;padding:1.5rem;font-size:11px;color:var(--text3);border
       </div>
     </div>
 
+    <!-- 3. STATS -->
     <div class="panel">
-      <div class="panel-head">Resultados</div>
-      <div class="panel-body">
+      <div class="panel-hd">Resultados</div>
+      <div class="panel-bd">
         <div class="mini-stats">
-          <div class="mini-stat"><div class="mini-stat-val blue" id="stat-total">—</div><div class="mini-stat-label">Encontradas</div></div>
-          <div class="mini-stat"><div class="mini-stat-val green" id="stat-match">—</div><div class="mini-stat-label">Match keywords</div></div>
-          <div class="mini-stat"><div class="mini-stat-val amber" id="stat-hoy">—</div><div class="mini-stat-label">Publicadas hoy</div></div>
+          <div class="ms"><div class="ms-val blue" id="stat-total">—</div><div class="ms-lbl">Encontradas</div></div>
+          <div class="ms"><div class="ms-val green" id="stat-match">—</div><div class="ms-lbl">Match kw</div></div>
+          <div class="ms"><div class="ms-val amber" id="stat-hoy">—</div><div class="ms-lbl">Hoy</div></div>
         </div>
       </div>
     </div>
   </aside>
 
   <main>
-    <div class="results-header">
-      <div class="results-title">Oportunidades de negocio</div>
-      <div class="results-count" id="results-count"></div>
+    <div class="res-hdr"><div class="res-title">Oportunidades de negocio</div><div class="res-count" id="res-count"></div></div>
+    <div id="err-area"></div>
+    <div id="res-area">
+      <div class="state-box"><div class="si">🔍</div><div class="st">Listo para buscar</div><div class="ss">Usa las palabras clave o escribe una búsqueda libre y presiona "Buscar oportunidades".</div></div>
     </div>
-    <div id="error-area"></div>
-    <div id="results-area">
-      <div class="state-box">
-        <div class="state-icon">🔍</div>
-        <div class="state-title">Listo para buscar</div>
-        <div class="state-sub">Usa las palabras clave o escribe una búsqueda libre y presiona "Buscar oportunidades".</div>
-      </div>
-    </div>
-    <div id="pagination-area"></div>
+    <div id="pag-area"></div>
   </main>
 </div>
 </div>
 
-<!-- ════════════════════════════════════════
-     PAGE: DASHBOARD / MIS VENTAS
-════════════════════════════════════════ -->
+<!-- PAGE DASHBOARD -->
 <div id="page-dashboard" class="page">
-<div class="dash-wrap">
-
-  <div class="section-hd">
-    <div>
-      <div class="section-title">Mis ventas en Compra Ágil</div>
-      <div class="section-sub">Registra tus ventas ganadas · gráficos y comparativo con competidores</div>
-    </div>
-    <button class="add-ganada-btn" onclick="openModal()">+ Registrar venta ganada</button>
+<div class="dw">
+  <div class="sec-hd">
+    <div><div class="sec-title">Mis ventas en Compra Ágil</div><div class="sec-sub">Registra tus ventas ganadas · últimos 12 meses</div></div>
+    <button class="btn-add" onclick="openModal()">+ Registrar venta</button>
   </div>
-
-  <!-- KPIs -->
-  <div class="dash-kpis">
-    <div class="kpi-card"><div class="kpi-label">Total vendido</div><div class="kpi-val green" id="kpi-total">$0</div><div class="kpi-sub">últimos 12 meses</div></div>
-    <div class="kpi-card"><div class="kpi-label">Órdenes ganadas</div><div class="kpi-val blue" id="kpi-ordenes">0</div><div class="kpi-sub">compras ágiles</div></div>
-    <div class="kpi-card"><div class="kpi-label">Ticket promedio</div><div class="kpi-val amber" id="kpi-ticket">$0</div><div class="kpi-sub">por orden</div></div>
-    <div class="kpi-card"><div class="kpi-label">Mejor mes</div><div class="kpi-val purple" id="kpi-mejor-mes">—</div><div class="kpi-sub" id="kpi-mejor-val"></div></div>
+  <div class="kpis">
+    <div class="kpi"><div class="kpi-lbl">Total vendido</div><div class="kpi-val green" id="kpi-total">$0</div><div class="kpi-sub">últimos 12 meses</div></div>
+    <div class="kpi"><div class="kpi-lbl">Órdenes ganadas</div><div class="kpi-val blue" id="kpi-ord">0</div><div class="kpi-sub">registradas</div></div>
+    <div class="kpi"><div class="kpi-lbl">Ticket promedio</div><div class="kpi-val amber" id="kpi-tick">$0</div><div class="kpi-sub">por orden</div></div>
+    <div class="kpi"><div class="kpi-lbl">Mejor mes</div><div class="kpi-val purple" id="kpi-mes">—</div><div class="kpi-sub" id="kpi-mes-val"></div></div>
   </div>
-
-  <!-- Charts -->
   <div class="dash-grid">
-    <div class="chart-card">
-      <div class="chart-title">Ventas mensuales (CLP)</div>
-      <div class="chart-wrap"><canvas id="chart-mensual"></canvas></div>
-    </div>
-    <div class="chart-card">
-      <div class="chart-title">Top organismos compradores</div>
-      <div class="chart-wrap"><canvas id="chart-categoria"></canvas></div>
-    </div>
+    <div class="chart-card"><div class="chart-title">Ventas mensuales (CLP)</div><div class="chart-wrap"><canvas id="chart-mensual"></canvas></div></div>
+    <div class="chart-card"><div class="chart-title">Ventas por categoría</div><div class="chart-wrap"><canvas id="chart-cat"></canvas></div></div>
   </div>
-
-  <!-- Tabla ventas -->
   <div class="panel">
-    <div class="panel-head">
-      <span>Historial de ventas registradas</span>
-      <span id="ventas-count" style="font-family:var(--mono);color:var(--accent)">0 registros</span>
-    </div>
-    <div class="panel-body" id="ventas-lista">
-      <div class="empty-dash">📋 Aún no has registrado ventas.<br>Haz clic en "+ Registrar venta ganada" para comenzar.</div>
-    </div>
+    <div class="panel-hd"><span>Historial de ventas</span><span id="v-count" style="font-family:var(--mono);color:var(--accent)">0 registros</span></div>
+    <div class="panel-bd" id="v-lista"><div class="empty-d">📋 Aún no has registrado ventas. Haz clic en "+ Registrar venta" para comenzar.</div></div>
   </div>
-
 </div>
 </div>
 
-<!-- ════════════════════════════════════════
-     PAGE: COMPETIDORES
-════════════════════════════════════════ -->
+<!-- PAGE COMPETIDORES -->
 <div id="page-competidores" class="page">
-<div class="comp-wrap">
-  <div class="section-hd">
-    <div>
-      <div class="section-title">Proveedores competidores</div>
-      <div class="section-sub">Empresas que compiten en tu mismo rubro en Mercado Público</div>
-    </div>
+<div class="cw">
+  <div class="sec-hd">
+    <div><div class="sec-title">Proveedores competidores</div><div class="sec-sub">Empresas que compiten en tu mismo rubro · datos período dic 2024–dic 2025</div></div>
   </div>
+  <div class="cgrid">
 
-  <div class="comp-grid">
-
-    <!-- Competidor 1: PCTECNO / Globat -->
-    <div class="comp-card">
-      <div class="comp-header">
-        <div class="comp-avatar" style="background:#1e40af">PC</div>
-        <div style="flex:1">
-          <div class="comp-razon">Globat Inversiones Ltda.</div>
-          <div class="comp-fantasia">Nombre fantasía: PCTECNO</div>
-        </div>
-        <span class="habil-badge">✓ Hábil</span>
+    <div class="ccard">
+      <div class="chdr">
+        <div class="cav" style="background:#1e40af">PC</div>
+        <div style="flex:1"><div class="craz">Globat Inversiones Ltda.</div><div class="cfant">Nombre fantasía: PCTECNO</div></div>
+        <span class="hbadge">✓ Hábil</span>
       </div>
-      <div class="comp-stats">
-        <div class="comp-stat"><div class="comp-stat-label">Ventas MP (12m)</div><div id="comp-ventas-0"><div class="comp-stat-val green">cargando…</div></div></div>
-        <div class="comp-stat"><div class="comp-stat-label">Órdenes (12m)</div><div id="comp-ordenes-0"><div class="comp-stat-val blue">—</div></div></div>
-        <div class="comp-stat"><div class="comp-stat-label">RUT</div><div class="comp-stat-val" style="font-size:12px;font-family:var(--mono)">76.342.433-2</div></div>
-        <div class="comp-stat"><div class="comp-stat-label">Tipo empresa</div><div class="comp-stat-val" style="font-size:12px">EMT ✓</div></div>
+      <div class="cstats">
+        <div class="cstat"><div class="cstat-lbl">Ventas MP (12m)</div><div class="cstat-val green">$33.778.087</div></div>
+        <div class="cstat"><div class="cstat-lbl">Comportamiento</div><div class="cstat-val blue">5/5</div></div>
+        <div class="cstat"><div class="cstat-lbl">RUT</div><div class="cstat-val mono">76.342.433-2</div></div>
+        <div class="cstat"><div class="cstat-lbl">Tipo empresa</div><div class="cstat-val" style="font-size:12px">EMT ✓</div></div>
       </div>
-      <div class="comp-meta">
-        <div class="comp-meta-row"><span class="comp-meta-key">Domicilio</span><span class="comp-meta-val">Nva Amunategui 1405 DP 301, Santiago, RM</span></div>
-        <div class="comp-meta-row"><span class="comp-meta-key">Acreditado</span><span class="comp-meta-val">Hasta 21-10-2025</span></div>
+      <div class="cmeta">
+        <div class="cmr"><span class="cmk">Domicilio</span><span class="cmv">Nva Amunategui 1405 DP 301, Santiago, RM</span></div>
+        <div class="cmr"><span class="cmk">Acreditado</span><span class="cmv">Hasta 21-10-2025</span></div>
       </div>
-      <div class="comp-insight">⚠️ Principal competidor en RM. Acreditación vencida oct-2025, verificar habilidad actual.</div>
-      <div class="comp-footer">
-        <div class="score-bar"><span class="score-label">Comportamiento</span><div class="score-dots"><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div></div></div>
-        <a href="https://www.mercadopublico.cl/Supplier/Modules/SupplierDetails/SupplierDetails.aspx?qs=76.342.433-2" target="_blank" class="btn-ver-mp">Ver en MP ↗</a>
+      <div class="cins">⚠️ Principal competidor en RM. Acreditación vencida oct-2025 — verificar habilidad actual.</div>
+      <div class="cftr">
+        <div style="display:flex;align-items:center;gap:6px"><span class="slbl">Comportamiento</span><div class="sdots"><div class="sdot on"></div><div class="sdot on"></div><div class="sdot on"></div><div class="sdot on"></div><div class="sdot on"></div></div></div>
+        <a href="https://www.mercadopublico.cl/Supplier/Modules/SupplierDetails/SupplierDetails.aspx?qs=76.342.433-2" target="_blank" class="btn-vmp">Ver en MP ↗</a>
       </div>
     </div>
 
-    <!-- Competidor 2: ASC Parts -->
-    <div class="comp-card">
-      <div class="comp-header">
-        <div class="comp-avatar" style="background:#065f46">AS</div>
-        <div style="flex:1">
-          <div class="comp-razon">ASC Parts Chile S.A.</div>
-          <div class="comp-fantasia">Nombre fantasía: ASC PARTS CHILE</div>
-        </div>
-        <span class="habil-badge">✓ Hábil</span>
+    <div class="ccard">
+      <div class="chdr">
+        <div class="cav" style="background:#065f46">AS</div>
+        <div style="flex:1"><div class="craz">ASC Parts Chile S.A.</div><div class="cfant">Nombre fantasía: ASC PARTS CHILE</div></div>
+        <span class="hbadge">✓ Hábil</span>
       </div>
-      <div class="comp-stats">
-        <div class="comp-stat"><div class="comp-stat-label">Ventas MP (12m)</div><div id="comp-ventas-1"><div class="comp-stat-val green">cargando…</div></div></div>
-        <div class="comp-stat"><div class="comp-stat-label">Órdenes (12m)</div><div id="comp-ordenes-1"><div class="comp-stat-val blue">—</div></div></div>
-        <div class="comp-stat"><div class="comp-stat-label">RUT</div><div class="comp-stat-val" style="font-size:12px;font-family:var(--mono)">76.151.037-1</div></div>
-        <div class="comp-stat"><div class="comp-stat-label">Tipo empresa</div><div class="comp-stat-val" style="font-size:12px">EMT ✓</div></div>
+      <div class="cstats">
+        <div class="cstat"><div class="cstat-lbl">Ventas MP (12m)</div><div class="cstat-val green">$25.886.382</div></div>
+        <div class="cstat"><div class="cstat-lbl">Comportamiento</div><div class="cstat-val blue">5/5</div></div>
+        <div class="cstat"><div class="cstat-lbl">RUT</div><div class="cstat-val mono">76.151.037-1</div></div>
+        <div class="cstat"><div class="cstat-lbl">Tipo empresa</div><div class="cstat-val" style="font-size:12px">EMT ✓</div></div>
       </div>
-      <div class="comp-meta">
-        <div class="comp-meta-row"><span class="comp-meta-key">Domicilio</span><span class="comp-meta-val">Exequiel Fernández 3663, Macul, Santiago, RM</span></div>
-        <div class="comp-meta-row"><span class="comp-meta-key">Acreditado</span><span class="comp-meta-val">Hasta 19-05-2026</span></div>
+      <div class="cmeta">
+        <div class="cmr"><span class="cmk">Domicilio</span><span class="cmv">Exequiel Fernández 3663, Macul, Santiago, RM</span></div>
+        <div class="cmr"><span class="cmk">Acreditado</span><span class="cmv">Hasta 19-05-2026</span></div>
       </div>
-      <div class="comp-insight">📍 Ubicado en Macul (zona cercana). Acreditación vigente mayo-2026.</div>
-      <div class="comp-footer">
-        <div class="score-bar"><span class="score-label">Comportamiento</span><div class="score-dots"><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div></div></div>
-        <a href="https://www.mercadopublico.cl/Supplier/Modules/SupplierDetails/SupplierDetails.aspx?qs=76.151.037-1" target="_blank" class="btn-ver-mp">Ver en MP ↗</a>
+      <div class="cins">📍 Ubicado en Macul. Acreditación vigente mayo-2026. Ventas sólidas $25,8M.</div>
+      <div class="cftr">
+        <div style="display:flex;align-items:center;gap:6px"><span class="slbl">Comportamiento</span><div class="sdots"><div class="sdot on"></div><div class="sdot on"></div><div class="sdot on"></div><div class="sdot on"></div><div class="sdot on"></div></div></div>
+        <a href="https://www.mercadopublico.cl/Supplier/Modules/SupplierDetails/SupplierDetails.aspx?qs=76.151.037-1" target="_blank" class="btn-vmp">Ver en MP ↗</a>
       </div>
     </div>
 
-    <!-- Competidor 3: RVG Insumos -->
-    <div class="comp-card">
-      <div class="comp-header">
-        <div class="comp-avatar" style="background:#7c2d12">RV</div>
-        <div style="flex:1">
-          <div class="comp-razon">RVG Insumos SPA</div>
-          <div class="comp-fantasia">Nombre fantasía: RVG INSUMOS</div>
-        </div>
-        <span class="habil-badge">✓ Hábil</span>
+    <div class="ccard">
+      <div class="chdr">
+        <div class="cav" style="background:#7c2d12">RV</div>
+        <div style="flex:1"><div class="craz">RVG Insumos SPA</div><div class="cfant">Nombre fantasía: RVG INSUMOS</div></div>
+        <span class="hbadge">✓ Hábil</span>
       </div>
-      <div class="comp-stats">
-        <div class="comp-stat"><div class="comp-stat-label">Ventas MP (12m)</div><div id="comp-ventas-2"><div class="comp-stat-val green">cargando…</div></div></div>
-        <div class="comp-stat"><div class="comp-stat-label">Órdenes (12m)</div><div id="comp-ordenes-2"><div class="comp-stat-val blue">—</div></div></div>
-        <div class="comp-stat"><div class="comp-stat-label">RUT</div><div class="comp-stat-val" style="font-size:12px;font-family:var(--mono)">77.910.877-5</div></div>
-        <div class="comp-stat"><div class="comp-stat-label">Tipo empresa</div><div class="comp-stat-val" style="font-size:12px">EMT ✓</div></div>
+      <div class="cstats">
+        <div class="cstat"><div class="cstat-lbl">Ventas MP (12m)</div><div class="cstat-val green">$17.354.522</div></div>
+        <div class="cstat"><div class="cstat-lbl">Comportamiento</div><div class="cstat-val amber">4,99/5</div></div>
+        <div class="cstat"><div class="cstat-lbl">RUT</div><div class="cstat-val mono">77.910.877-5</div></div>
+        <div class="cstat"><div class="cstat-lbl">Tipo empresa</div><div class="cstat-val" style="font-size:12px">EMT ✓</div></div>
       </div>
-      <div class="comp-meta">
-        <div class="comp-meta-row"><span class="comp-meta-key">Domicilio</span><span class="comp-meta-val">Calle 3 Poniente 0157, San Andrés, Talca, Maule</span></div>
-        <div class="comp-meta-row"><span class="comp-meta-key">Acreditado</span><span class="comp-meta-val">Hasta 17-04-2026</span></div>
+      <div class="cmeta">
+        <div class="cmr"><span class="cmk">Domicilio</span><span class="cmv">Calle 3 Poniente 0157, San Andrés, Talca, Maule</span></div>
+        <div class="cmr"><span class="cmk">Acreditado</span><span class="cmv">Hasta 17-04-2026</span></div>
       </div>
-      <div class="comp-insight">📍 Región del Maule — menor competencia directa en RM.</div>
-      <div class="comp-footer">
-        <div class="score-bar"><span class="score-label">Comportamiento</span><div class="score-dots"><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on" style="opacity:.5"></div></div></div>
-        <a href="https://www.mercadopublico.cl/Supplier/Modules/SupplierDetails/SupplierDetails.aspx?qs=77.910.877-5" target="_blank" class="btn-ver-mp">Ver en MP ↗</a>
+      <div class="cins">📍 Región del Maule — menor competencia directa en RM. Acreditación vigente abr-2026.</div>
+      <div class="cftr">
+        <div style="display:flex;align-items:center;gap:6px"><span class="slbl">Comportamiento</span><div class="sdots"><div class="sdot on"></div><div class="sdot on"></div><div class="sdot on"></div><div class="sdot on"></div><div class="sdot on" style="opacity:.4"></div></div></div>
+        <a href="https://www.mercadopublico.cl/Supplier/Modules/SupplierDetails/SupplierDetails.aspx?qs=77.910.877-5" target="_blank" class="btn-vmp">Ver en MP ↗</a>
       </div>
     </div>
 
   </div>
-
-  <!-- Comparativo -->
   <div class="chart-card">
-    <div class="chart-title">Comparativo de ventas MP — tú vs competidores (período dic 2024 – dic 2025)</div>
-    <div class="chart-wrap" style="height:220px"><canvas id="chart-competidores"></canvas></div>
+    <div class="chart-title">Comparativo ventas MP — IndexStore vs competidores (dic 2024–dic 2025)</div>
+    <div class="chart-wrap" style="height:220px"><canvas id="chart-comp"></canvas></div>
   </div>
-
 </div>
 </div>
 
-<!-- ── Modal registrar venta ── -->
-<div class="modal-bg" id="modal-bg">
+<!-- MODAL -->
+<div class="mbg" id="mbg">
   <div class="modal">
-    <div class="modal-title">Registrar venta ganada</div>
-    <div class="modal-field">
-      <div class="modal-label">ID / Código de la orden</div>
-      <input class="modal-input" id="m-codigo" placeholder="Ej: 750325-2-CA26"/>
+    <div class="mttl">Registrar venta ganada</div>
+    <div class="mf"><div class="ml">ID / Código de la orden</div><input class="mi" id="m-cod" placeholder="Ej: 750325-2-CA26"/></div>
+    <div class="mf"><div class="ml">Descripción del producto/servicio</div><input class="mi" id="m-nom" placeholder="Ej: Pantalla notebook HP 15.6"/></div>
+    <div class="mf"><div class="ml">Categoría</div>
+      <select class="mi" id="m-cat"><option>Pantallas</option><option>Cargadores</option><option>Baterías</option><option>Servicio técnico</option><option>Periféricos</option><option>Otro</option></select>
     </div>
-    <div class="modal-field">
-      <div class="modal-label">Descripción del producto/servicio</div>
-      <input class="modal-input" id="m-nombre" placeholder="Ej: Pantalla notebook HP 15.6"/>
-    </div>
-    <div class="modal-field">
-      <div class="modal-label">Categoría</div>
-      <select class="modal-input" id="m-categoria">
-        <option>Pantallas</option>
-        <option>Cargadores</option>
-        <option>Baterías</option>
-        <option>Servicio técnico</option>
-        <option>Periféricos</option>
-        <option>Otro</option>
-      </select>
-    </div>
-    <div class="modal-field">
-      <div class="modal-label">Monto (CLP sin puntos)</div>
-      <input class="modal-input" id="m-monto" type="number" placeholder="Ej: 450000"/>
-    </div>
-    <div class="modal-field">
-      <div class="modal-label">Organismo comprador</div>
-      <input class="modal-input" id="m-organismo" placeholder="Ej: Municipalidad de Las Condes"/>
-    </div>
-    <div class="modal-field">
-      <div class="modal-label">Fecha de la orden</div>
-      <input class="modal-input" id="m-fecha" type="date"/>
-    </div>
-    <div class="modal-row">
-      <button class="modal-cancel" onclick="closeModal()">Cancelar</button>
-      <button class="modal-save" onclick="saveVenta()">Guardar venta</button>
+    <div class="mf"><div class="ml">Monto (CLP sin puntos)</div><input class="mi" id="m-monto" type="number" placeholder="Ej: 450000"/></div>
+    <div class="mf"><div class="ml">Organismo comprador</div><input class="mi" id="m-org" placeholder="Ej: Municipalidad de Las Condes"/></div>
+    <div class="mf"><div class="ml">Fecha de la orden</div><input class="mi" id="m-fecha" type="date"/></div>
+    <div class="mrow">
+      <button class="mcancel" onclick="document.getElementById('mbg').classList.remove('open')">Cancelar</button>
+      <button class="msave" onclick="saveVenta()">Guardar venta</button>
     </div>
   </div>
 </div>
 
-<footer>IndexStore.cl · Portal interno Compra Ágil · ChileCompra API v1 · <span id="footer-date"></span></footer>
+<footer>IndexStore.cl · Portal interno Compra Ágil · ChileCompra API v1 · <span id="fdate"></span></footer>
 
 <script>
-// ══════════════════════════════════════════
-// CONFIG
-// ══════════════════════════════════════════
-const API_BASE  = '/api/licitaciones';
-const PER_PAGE  = 15;
-const STORAGE_KEY = 'ix_ventas_v1';
+const API_BASE = '/api/licitaciones';
+const PER_PAGE = 15;
+const SK = 'ix_v2';
+const DEFAULT_KW = ['cargador','cargador notebook','bateria','batería notebook','pantalla notebook','pantalla'];
 
-const DEFAULT_KEYWORDS = [
-  'cargador','cargador notebook','bateria',
-  'batería notebook','pantalla notebook','pantalla'
-];
-
-// ══════════════════════════════════════════
-// NAVEGACIÓN
-// ══════════════════════════════════════════
-function showPage(id, btn) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('page-' + id).classList.add('active');
-  btn.classList.add('active');
-  if (id === 'dashboard') renderDashboard();
-}
-
-// ══════════════════════════════════════════
-// ESTADO
-// ══════════════════════════════════════════
-let keywords   = [...DEFAULT_KEYWORDS];
-let allResults = [], filtered = [], page = 1;
-
-// ══════════════════════════════════════════
-// UTILS
-// ══════════════════════════════════════════
-function toMPDate(d) {
-  return String(d.getDate()).padStart(2,'0') + String(d.getMonth()+1).padStart(2,'0') + d.getFullYear();
-}
-function offsetDate(days) { const d = new Date(); d.setDate(d.getDate()-days); return d; }
-
-function getFechasRango() {
-  const v = document.getElementById('filter-fecha').value;
-  if (v==='hoy')    return [toMPDate(new Date())];
-  if (v==='ayer')   return [toMPDate(offsetDate(1))];
-  if (v==='2dias')  return [toMPDate(new Date()), toMPDate(offsetDate(1))];
-  if (v==='semana') return Array.from({length:7},(_,i)=>toMPDate(offsetDate(i)));
-  if (v==='manual') {
-    const val = document.getElementById('filter-date').value;
-    if (!val) return [toMPDate(new Date())];
-    const [y,m,d] = val.split('-'); return [`${d}${m}${y}`];
-  }
-  return [toMPDate(new Date())];
-}
-function toggleDateInput() {
-  document.getElementById('date-picker-group').style.display =
-    document.getElementById('filter-fecha').value==='manual' ? '' : 'none';
-}
-
-function formatCLP(val) {
-  const n = parseFloat(val);
-  if (!val||isNaN(n)) return null;
-  return new Intl.NumberFormat('es-CL',{style:'currency',currency:'CLP',maximumFractionDigits:0}).format(n);
-}
-function formatDate(str) {
-  if (!str) return null;
-  try { return new Date(str).toLocaleDateString('es-CL',{day:'2-digit',month:'short',year:'numeric'}); }
-  catch { return str.slice(0,10); }
-}
-function isHoy(s) {
-  if (!s) return false;
-  return new Date(s).toDateString() === new Date().toDateString();
-}
-
-// ══════════════════════════════════════════
-// KEYWORDS
-// ══════════════════════════════════════════
-function renderChips() {
-  const c = document.getElementById('chips');
-  c.innerHTML = '';
-  keywords.forEach((kw,i) => {
-    const el = document.createElement('span');
-    el.className = 'chip';
-    el.innerHTML = `${kw}<span style="font-size:10px;opacity:.6;margin-left:3px">✕</span>`;
-    el.addEventListener('click',()=>{ keywords.splice(i,1); renderChips(); });
-    c.appendChild(el);
+// ── Navegación ──────────────────────────
+function showPage(id) {
+  ['oportunidades','dashboard','competidores'].forEach(p => {
+    document.getElementById('page-'+p).classList.toggle('active', p===id);
+    document.getElementById('nav-'+p).classList.toggle('active', p===id);
   });
-  document.getElementById('kw-count').textContent = `${keywords.length} activas`;
-}
-function addKw() {
-  const input = document.getElementById('kw-input');
-  const v = input.value.trim().toLowerCase();
-  if (v && !keywords.includes(v)) { keywords.push(v); renderChips(); }
-  input.value = ''; input.focus();
-}
-document.getElementById('kw-input').addEventListener('keydown', e => { if(e.key==='Enter') addKw(); });
-
-// ══════════════════════════════════════════
-// MATCHING
-// ══════════════════════════════════════════
-function kwMatch(item) {
-  const text = [item.Nombre,item.Descripcion,item.Comprador?.NombreOrganismo]
-    .filter(Boolean).join(' ').toLowerCase();
-  return keywords.find(k => text.includes(k.toLowerCase())) || null;
+  if (id==='dashboard') renderDash();
+  if (id==='competidores') renderComp();
 }
 
-// ══════════════════════════════════════════
-// RENDER CARDS
-// ══════════════════════════════════════════
-function renderCard(item, idx) {
-  const match  = kwMatch(item);
-  const org    = item.Comprador?.NombreOrganismo || 'Organismo público';
-  const region = item.Comprador?.RegionUnidad || item.Comprador?.Region || '';
-  const monto  = formatCLP(item.Monto || item.MontoEstimado);
-  const fecha  = formatDate(item.FechaPublicacion || item.FechaCierre);
-  const fechaCierre = formatDate(item.FechaCierre);
-  const hoy    = isHoy(item.FechaPublicacion || item.FechaCierre);
-  // Buscar ID en todos los campos posibles
-  const codigo = item.CodigoLicitacion || item.Codigo || item.codigo ||
-                 item.CodigoExterno || item.ID || item.Id || '';
-  const tipo   = item.Tipo || item.TipoLicitacion || '';
-  const url    = codigo
-    ? `https://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?qs=${codigo}`
-    : 'https://www.mercadopublico.cl';
-  const delay  = Math.min(idx*30,300);
+// ── Estado ──────────────────────────────
+let kws = [...DEFAULT_KW], allR = [], filt = [], pg = 1;
 
-  return `<div class="result-card" style="animation-delay:${delay}ms">
-  <div class="result-top">
-    <div class="result-name">${item.Nombre||'Sin título'}</div>
-    ${monto
-      ? `<div class="result-monto">${monto}</div>`
-      : `<div class="result-monto result-monto-nd">Monto n/d</div>`}
+// ── Utils ───────────────────────────────
+const clp = v => { const n=parseFloat(v); if(!v||isNaN(n))return null; return new Intl.NumberFormat('es-CL',{style:'currency',currency:'CLP',maximumFractionDigits:0}).format(n); };
+const fdate = s => { if(!s)return null; try{return new Date(s).toLocaleDateString('es-CL',{day:'2-digit',month:'short',year:'numeric'})}catch{return s.slice(0,10)} };
+const isToday = s => { if(!s)return false; return new Date(s).toDateString()===new Date().toDateString(); };
+const mpd = d => String(d.getDate()).padStart(2,'0')+String(d.getMonth()+1).padStart(2,'0')+d.getFullYear();
+const off = n => { const d=new Date(); d.setDate(d.getDate()-n); return d; };
+
+function getRango() {
+  const v = document.getElementById('filter-fecha').value;
+  if(v==='hoy')    return [mpd(new Date())];
+  if(v==='ayer')   return [mpd(off(1))];
+  if(v==='2dias')  return [mpd(new Date()),mpd(off(1))];
+  if(v==='semana') return Array.from({length:7},(_,i)=>mpd(off(i)));
+  if(v==='manual') { const x=document.getElementById('filter-date').value; if(!x)return[mpd(new Date())]; const[y,m,d]=x.split('-');return[`${d}${m}${y}`]; }
+  return [mpd(new Date())];
+}
+function toggleDate() { document.getElementById('dpg').style.display=document.getElementById('filter-fecha').value==='manual'?'':'none'; }
+
+// ── Keywords ────────────────────────────
+function renderChips() {
+  const c = document.getElementById('chips'); c.innerHTML='';
+  kws.forEach((k,i)=>{ const el=document.createElement('span'); el.className='chip'; el.innerHTML=`${k}<span style="font-size:10px;opacity:.6;margin-left:3px">✕</span>`; el.onclick=()=>{kws.splice(i,1);renderChips();}; c.appendChild(el); });
+  document.getElementById('kw-count').textContent=`${kws.length} activas`;
+}
+function addKw() { const i=document.getElementById('kw-input'); const v=i.value.trim().toLowerCase(); if(v&&!kws.includes(v)){kws.push(v);renderChips();} i.value=''; i.focus(); }
+document.getElementById('kw-input').addEventListener('keydown',e=>{if(e.key==='Enter')addKw();});
+const kwMatch = item => { const t=[item.Nombre,item.Descripcion,item.Comprador?.NombreOrganismo].filter(Boolean).join(' ').toLowerCase(); return kws.find(k=>t.includes(k.toLowerCase()))||null; };
+
+// ── Render cards ────────────────────────
+function renderCard(item,idx) {
+  const match=kwMatch(item), org=item.Comprador?.NombreOrganismo||'Organismo público';
+  const monto=clp(item.Monto||item.MontoEstimado), fecha=fdate(item.FechaPublicacion||item.FechaCierre);
+  const fcierre=fdate(item.FechaCierre), hoy=isToday(item.FechaPublicacion||item.FechaCierre);
+  const cod=item.CodigoLicitacion||item.Codigo||item.codigo||item.ID||item.Id||'';
+  const url=cod?`https://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?qs=${cod}`:'https://www.mercadopublico.cl';
+  return `<div class="rcard" style="animation-delay:${Math.min(idx*30,300)}ms">
+  <div class="rtop"><div class="rname">${item.Nombre||'Sin título'}</div>${monto?`<div class="rmonto">${monto}</div>`:`<div class="rmonto rmonto-nd">Monto n/d</div>`}</div>
+  <div class="rdet">
+    <div class="rdet-item"><span class="rdet-k">ID</span><span class="rdet-v mono">${cod||'—'}</span></div>
+    <div class="rdet-item"><span class="rdet-k">Organismo</span><span class="rdet-v">${org}</span></div>
+    ${fcierre?`<div class="rdet-item"><span class="rdet-k">Cierre</span><span class="rdet-v">${fcierre}</span></div>`:''}
   </div>
-  <div class="result-detail-row">
-    <div class="result-detail-item">
-      <span class="detail-label">ID</span>
-      <span class="detail-val mono">${codigo||'—'}</span>
-    </div>
-    <div class="result-detail-item">
-      <span class="detail-label">Organismo</span>
-      <span class="detail-val">${org}${region?' · '+region:''}</span>
-    </div>
-    ${fechaCierre?`<div class="result-detail-item"><span class="detail-label">Cierre</span><span class="detail-val">${fechaCierre}</span></div>`:''}
-    ${tipo?`<div class="result-detail-item"><span class="detail-label">Tipo</span><span class="detail-val">${tipo}</span></div>`:''}
-  </div>
-  <div class="result-tags">
+  <div class="rtags">
     ${match?`<span class="tag tag-match">✓ ${match}</span>`:''}
     ${hoy?`<span class="tag tag-new">HOY</span>`:''}
     ${fecha?`<span class="tag tag-hot">📅 ${fecha}</span>`:''}
-    <a href="${url}" target="_blank" rel="noopener" class="btn-mp">Ver detalle completo
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-    </a>
+    <a href="${url}" target="_blank" rel="noopener" class="btn-mp">Ver detalle completo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
   </div>
 </div>`;
 }
 
-function renderResults() {
-  const area = document.getElementById('results-area');
-  const count = document.getElementById('results-count');
-  if (!filtered.length) {
-    area.innerHTML = `<div class="state-box"><div class="state-icon">📭</div><div class="state-title">Sin resultados</div><div class="state-sub">Intenta con otra fecha, otras palabras clave, o verifica la conexión con la API.</div></div>`;
-    count.textContent = ''; document.getElementById('pagination-area').innerHTML = ''; return;
-  }
-  const start = (page-1)*PER_PAGE;
-  area.innerHTML = `<div class="results-list">${filtered.slice(start,start+PER_PAGE).map((r,i)=>renderCard(r,i)).join('')}</div>`;
-  count.textContent = `${filtered.length} resultados · pág. ${page}`;
-  renderPagination();
+function renderRes() {
+  const area=document.getElementById('res-area'), cnt=document.getElementById('res-count');
+  if(!filt.length){area.innerHTML=`<div class="state-box"><div class="si">📭</div><div class="st">Sin resultados</div><div class="ss">Intenta con otra fecha o palabras clave distintas.</div></div>`;cnt.textContent='';document.getElementById('pag-area').innerHTML='';return;}
+  area.innerHTML=`<div class="res-list">${filt.slice((pg-1)*PER_PAGE,pg*PER_PAGE).map((r,i)=>renderCard(r,i)).join('')}</div>`;
+  cnt.textContent=`${filt.length} resultados · pág. ${pg}`;
+  renderPag();
+}
+function renderPag() {
+  const tot=Math.ceil(filt.length/PER_PAGE), a=document.getElementById('pag-area');
+  if(tot<=1){a.innerHTML='';return;}
+  let h='';
+  if(pg>1)h+=`<button class="pb" onclick="goP(${pg-1})">‹</button>`;
+  const lo=Math.max(1,pg-2),hi=Math.min(tot,pg+2);
+  if(lo>1)h+=`<button class="pb" onclick="goP(1)">1</button><span style="color:var(--text3)">…</span>`;
+  for(let i=lo;i<=hi;i++)h+=`<button class="pb${i===pg?' active':''}" onclick="goP(${i})">${i}</button>`;
+  if(hi<tot)h+=`<span style="color:var(--text3)">…</span><button class="pb" onclick="goP(${tot})">${tot}</button>`;
+  if(pg<tot)h+=`<button class="pb" onclick="goP(${pg+1})">›</button>`;
+  a.innerHTML=`<div class="pagination">${h}<span style="font-size:12px;color:var(--text3);margin-left:8px">${filt.length} oportunidades</span></div>`;
+}
+window.goP=p=>{pg=p;renderRes();window.scrollTo({top:0,behavior:'smooth'});};
+
+function updStats() {
+  document.getElementById('stat-total').textContent=filt.length;
+  document.getElementById('stat-match').textContent=filt.filter(r=>kwMatch(r)).length;
+  document.getElementById('stat-hoy').textContent=filt.filter(r=>isToday(r.FechaPublicacion||r.FechaCierre||'')).length;
 }
 
-function renderPagination() {
-  const total = Math.ceil(filtered.length/PER_PAGE);
-  const area  = document.getElementById('pagination-area');
-  if (total<=1) { area.innerHTML=''; return; }
-  let btns='';
-  if (page>1) btns+=`<button class="page-btn" onclick="goPage(${page-1})">‹</button>`;
-  const lo=Math.max(1,page-2), hi=Math.min(total,page+2);
-  if (lo>1) btns+=`<button class="page-btn" onclick="goPage(1)">1</button><span style="color:var(--text3)">…</span>`;
-  for (let i=lo;i<=hi;i++) btns+=`<button class="page-btn${i===page?' active':''}" onclick="goPage(${i})">${i}</button>`;
-  if (hi<total) btns+=`<span style="color:var(--text3)">…</span><button class="page-btn" onclick="goPage(${total})">${total}</button>`;
-  if (page<total) btns+=`<button class="page-btn" onclick="goPage(${page+1})">›</button>`;
-  area.innerHTML=`<div class="pagination">${btns}<span style="font-size:12px;color:var(--text3);margin-left:8px">${filtered.length} oportunidades</span></div>`;
+// ── Fetch ───────────────────────────────
+async function fetchF(fecha,q,est) {
+  const p=new URLSearchParams({fecha}); if(est!=='todos')p.set('estado',est); if(q)p.set('q',q);
+  try{const r=await fetch(`${API_BASE}?${p}`,{signal:AbortSignal.timeout(15000)});if(!r.ok)return[];const d=await r.json();return d.Listado||[];}catch{return[];}
 }
-window.goPage=(p)=>{ page=p; renderResults(); window.scrollTo({top:0,behavior:'smooth'}); };
-
-function updateStats() {
-  const matched  = filtered.filter(r=>kwMatch(r)).length;
-  const todayCnt = filtered.filter(r=>isHoy(r.FechaPublicacion||r.FechaCierre||'')).length;
-  document.getElementById('stat-total').textContent  = filtered.length;
-  document.getElementById('stat-match').textContent  = matched;
-  document.getElementById('stat-hoy').textContent    = todayCnt;
-}
-
-// ══════════════════════════════════════════
-// FETCH
-// ══════════════════════════════════════════
-async function fetchFecha(fecha,q,estado) {
-  const params = new URLSearchParams({fecha});
-  if (estado!=='todos') params.set('estado',estado);
-  if (q) params.set('q',q);
-  try {
-    const r = await fetch(`${API_BASE}?${params}`,{signal:AbortSignal.timeout(15000)});
-    if (!r.ok) return [];
-    const d = await r.json();
-    return d.Listado||[];
-  } catch { return []; }
-}
-
 async function doSearch() {
-  const btn = document.getElementById('btn-search');
-  btn.disabled=true; btn.textContent='Buscando…';
-  document.getElementById('error-area').innerHTML='';
-  document.getElementById('results-area').innerHTML=`<div class="state-box"><div class="spinner"></div><div class="state-title">Consultando Mercado Público…</div><div class="state-sub">Buscando en múltiples fechas para más resultados.</div></div>`;
-  document.getElementById('pagination-area').innerHTML='';
-
-  const q      = document.getElementById('search-input').value.trim();
-  const estado = document.getElementById('filter-estado').value;
-  const fechas = getFechasRango();
-
+  const btn=document.getElementById('btn-search'); btn.disabled=true; btn.textContent='Buscando…';
+  document.getElementById('err-area').innerHTML='';
+  document.getElementById('res-area').innerHTML=`<div class="state-box"><div class="spinner"></div><div class="st">Consultando Mercado Público…</div><div class="ss">Buscando en múltiples fechas.</div></div>`;
+  document.getElementById('pag-area').innerHTML='';
+  const q=document.getElementById('search-input').value.trim(), est=document.getElementById('filter-estado').value, fechas=getRango();
   try {
-    const resultados = await Promise.all(fechas.map(f=>fetchFecha(f,q,estado)));
-    const seen = new Set();
-    allResults = resultados.flat().filter(r=>{
-      const id = r.CodigoLicitacion||r.Codigo||r.codigo||r.ID||JSON.stringify(r.Nombre);
-      if (seen.has(id)) return false; seen.add(id); return true;
-    });
-    filtered = (!q && keywords.length>0)
-      ? (allResults.filter(r=>kwMatch(r)).length ? allResults.filter(r=>kwMatch(r)) : allResults)
-      : allResults;
-    page=1; updateStats(); renderResults();
-  } catch(err) {
-    document.getElementById('error-area').innerHTML=`<div class="error-bar">⚠️ <strong>Error:</strong> ${err.message}</div>`;
-    document.getElementById('results-area').innerHTML=`<div class="state-box"><div class="state-icon">⚡</div><div class="state-title">No se pudo conectar</div><div class="state-sub">Intenta nuevamente.</div></div>`;
+    const res=await Promise.all(fechas.map(f=>fetchF(f,q,est)));
+    const seen=new Set();
+    allR=res.flat().filter(r=>{const id=r.CodigoLicitacion||r.Codigo||r.ID||JSON.stringify(r.Nombre);if(seen.has(id))return false;seen.add(id);return true;});
+    filt=(!q&&kws.length)?( allR.filter(r=>kwMatch(r)).length?allR.filter(r=>kwMatch(r)):allR ):allR;
+    pg=1; updStats(); renderRes();
+  } catch(e) {
+    document.getElementById('err-area').innerHTML=`<div class="error-bar">⚠️ Error: ${e.message}</div>`;
+    document.getElementById('res-area').innerHTML=`<div class="state-box"><div class="si">⚡</div><div class="st">No se pudo conectar</div><div class="ss">Intenta nuevamente.</div></div>`;
     ['stat-total','stat-match','stat-hoy'].forEach(id=>document.getElementById(id).textContent='—');
   }
   btn.disabled=false;
@@ -755,172 +531,67 @@ async function doSearch() {
 }
 document.getElementById('search-input').addEventListener('keydown',e=>{if(e.key==='Enter')doSearch();});
 
-// ══════════════════════════════════════════
-// VENTAS / DASHBOARD
-// ══════════════════════════════════════════
-function loadVentas() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]'); } catch { return []; }
-}
-function saveVentas(v) { localStorage.setItem(STORAGE_KEY, JSON.stringify(v)); }
-
-function openModal() {
-  document.getElementById('modal-bg').classList.add('open');
-  document.getElementById('m-fecha').value = new Date().toISOString().slice(0,10);
-}
-function closeModal() { document.getElementById('modal-bg').classList.remove('open'); }
-window.openModal=openModal; window.closeModal=closeModal;
-
+// ── Ventas / Dashboard ──────────────────
+const loadV=()=>{try{return JSON.parse(localStorage.getItem(SK)||'[]');}catch{return[];}};
+const saveV=v=>localStorage.setItem(SK,JSON.stringify(v));
+window.openModal=()=>{document.getElementById('mbg').classList.add('open');document.getElementById('m-fecha').value=new Date().toISOString().slice(0,10);};
 function saveVenta() {
-  const codigo    = document.getElementById('m-codigo').value.trim();
-  const nombre    = document.getElementById('m-nombre').value.trim();
-  const categoria = document.getElementById('m-categoria').value;
-  const monto     = parseFloat(document.getElementById('m-monto').value)||0;
-  const organismo = document.getElementById('m-organismo').value.trim();
-  const fecha     = document.getElementById('m-fecha').value;
-  if (!nombre||!monto||!fecha) { alert('Completa nombre, monto y fecha.'); return; }
-  const ventas = loadVentas();
-  ventas.push({id:Date.now(),codigo,nombre,categoria,monto,organismo,fecha});
-  saveVentas(ventas);
-  closeModal();
-  renderDashboard();
-  ['m-codigo','m-nombre','m-monto','m-organismo'].forEach(id=>document.getElementById(id).value='');
+  const cod=document.getElementById('m-cod').value.trim(), nom=document.getElementById('m-nom').value.trim();
+  const cat=document.getElementById('m-cat').value, monto=parseFloat(document.getElementById('m-monto').value)||0;
+  const org=document.getElementById('m-org').value.trim(), fecha=document.getElementById('m-fecha').value;
+  if(!nom||!monto||!fecha){alert('Completa nombre, monto y fecha.');return;}
+  const v=loadV(); v.push({id:Date.now(),cod,nom,cat,monto,org,fecha}); saveV(v);
+  document.getElementById('mbg').classList.remove('open');
+  ['m-cod','m-nom','m-monto','m-org'].forEach(id=>document.getElementById(id).value='');
+  renderDash();
 }
 window.saveVenta=saveVenta;
+window.delV=id=>{if(!confirm('¿Eliminar esta venta?'))return;saveV(loadV().filter(v=>v.id!==id));renderDash();};
 
-function deleteVenta(id) {
-  if (!confirm('¿Eliminar esta venta?')) return;
-  saveVentas(loadVentas().filter(v=>v.id!==id));
-  renderDashboard();
-}
-window.deleteVenta=deleteVenta;
-
-let chartMensual=null, chartCategoria=null, chartComp=null;
-
-// ══════════════════════════════════════════
-// DATOS REALES (fuente: fichas Mercado Público dic 2024–dic 2025)
-// ══════════════════════════════════════════
-const DATOS_COMPETIDORES = [
-  { nombre:'Globat Inversiones',fantasia:'PCTECNO',       rut:'76.342.433-2',ventas:33778087,color:'#f59e0b',elId:'comp-ventas-0',orId:'comp-ordenes-0' },
-  { nombre:'ASC Parts Chile S.A.',fantasia:'ASC PARTS CHILE',rut:'76.151.037-1',ventas:25886382,color:'#22c55e',elId:'comp-ventas-1',orId:'comp-ordenes-1' },
-  { nombre:'RVG Insumos SPA',    fantasia:'RVG INSUMOS',  rut:'77.910.877-5',ventas:17354522,color:'#7c3aed',elId:'comp-ventas-2',orId:'comp-ordenes-2' },
-];
-
-// ══════════════════════════════════════════
-// DASHBOARD
-// ══════════════════════════════════════════
-function renderDashboard() {
-  // Aviso sobre la API de OC
-  const infoHtml = `
-    <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:12px 16px;font-size:12px;color:#1e40af;margin-bottom:1rem;display:flex;gap:10px;align-items:flex-start">
-      <span style="font-size:16px;flex-shrink:0">ℹ️</span>
-      <div><strong>Datos desde Mercado Público:</strong> El endpoint de Órdenes de Compra de ChileCompra requiere permisos especiales de acceso por RUT. Para habilitarlo, escribe a <strong>api@chilecompra.cl</strong> solicitando acceso al servicio de OC para el RUT 76.200.548-4. Mientras tanto puedes registrar tus ventas manualmente abajo.</div>
-    </div>`;
-
-  const ventas = loadVentas();
-  const total  = ventas.reduce((s,v)=>s+v.monto, 0);
-  const ticket = ventas.length ? Math.round(total/ventas.length) : 0;
-
-  document.getElementById('kpi-total').textContent   = formatCLP(total)||'$0';
-  document.getElementById('kpi-ordenes').textContent = ventas.length;
-  document.getElementById('kpi-ticket').textContent  = formatCLP(ticket)||'$0';
-
-  const porMes = {};
-  ventas.forEach(v=>{ const k=v.fecha.slice(0,7); porMes[k]=(porMes[k]||0)+v.monto; });
-  const mejorMes = Object.entries(porMes).sort((a,b)=>b[1]-a[1])[0];
-  if (mejorMes) {
-    const [y,m] = mejorMes[0].split('-');
-    document.getElementById('kpi-mejor-mes').textContent = new Date(y,m-1,1).toLocaleDateString('es-CL',{month:'long',year:'numeric'});
-    document.getElementById('kpi-mejor-val').textContent = formatCLP(mejorMes[1]);
-  } else {
-    document.getElementById('kpi-mejor-mes').textContent = '—';
-    document.getElementById('kpi-mejor-val').textContent = '';
-  }
-
-  const meses = Array.from({length:12},(_,i)=>{ const d=new Date(); d.setMonth(d.getMonth()-11+i); return d.toISOString().slice(0,7); });
-  const ventasMes = meses.map(m=>ventas.filter(v=>v.fecha.startsWith(m)).reduce((s,v)=>s+v.monto,0));
-  const labMeses  = meses.map(m=>{ const [y,mo]=m.split('-'); return new Date(y,mo-1,1).toLocaleDateString('es-CL',{month:'short'}); });
-
-  if (chartMensual) chartMensual.destroy();
-  chartMensual = new Chart(document.getElementById('chart-mensual'),{
-    type:'bar',
-    data:{ labels:labMeses, datasets:[{data:ventasMes,backgroundColor:'rgba(14,165,233,0.75)',borderColor:'#0ea5e9',borderWidth:1,borderRadius:4,label:'Ventas CLP'}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+formatCLP(ctx.raw)}}},scales:{y:{ticks:{callback:v=>v>0?'$'+Math.round(v/1000)+'K':'$0'},grid:{color:'rgba(0,0,0,0.04)'}},x:{grid:{display:false}}}}
-  });
-
+let cMens=null,cCat=null,cComp=null;
+function renderDash() {
+  const vs=loadV(), tot=vs.reduce((s,v)=>s+v.monto,0), tick=vs.length?Math.round(tot/vs.length):0;
+  document.getElementById('kpi-total').textContent=clp(tot)||'$0';
+  document.getElementById('kpi-ord').textContent=vs.length;
+  document.getElementById('kpi-tick').textContent=clp(tick)||'$0';
+  const pm={};vs.forEach(v=>{const k=v.fecha.slice(0,7);pm[k]=(pm[k]||0)+v.monto;});
+  const best=Object.entries(pm).sort((a,b)=>b[1]-a[1])[0];
+  if(best){const[y,m]=best[0].split('-');document.getElementById('kpi-mes').textContent=new Date(y,m-1,1).toLocaleDateString('es-CL',{month:'long',year:'numeric'});document.getElementById('kpi-mes-val').textContent=clp(best[1]);}
+  else{document.getElementById('kpi-mes').textContent='—';document.getElementById('kpi-mes-val').textContent='';}
+  const meses=Array.from({length:12},(_,i)=>{const d=new Date();d.setMonth(d.getMonth()-11+i);return d.toISOString().slice(0,7);});
+  const vm=meses.map(m=>vs.filter(v=>v.fecha.startsWith(m)).reduce((s,v)=>s+v.monto,0));
+  const lm=meses.map(m=>{const[y,mo]=m.split('-');return new Date(y,mo-1,1).toLocaleDateString('es-CL',{month:'short'});});
+  if(cMens)cMens.destroy();
+  cMens=new Chart(document.getElementById('chart-mensual'),{type:'bar',data:{labels:lm,datasets:[{data:vm,backgroundColor:'rgba(14,165,233,.75)',borderColor:'#0ea5e9',borderWidth:1,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' '+clp(c.raw)}}},scales:{y:{ticks:{callback:v=>v>0?'$'+Math.round(v/1000)+'K':'$0'},grid:{color:'rgba(0,0,0,.04)'}},x:{grid:{display:false}}}}});
   const cats=['Pantallas','Cargadores','Baterías','Servicio técnico','Periféricos','Otro'];
-  const catVals=cats.map(c=>ventas.filter(v=>v.categoria===c).reduce((s,v)=>s+v.monto,0));
-  if (chartCategoria) chartCategoria.destroy();
-  chartCategoria = new Chart(document.getElementById('chart-categoria'),{
-    type:'doughnut',
-    data:{ labels:cats, datasets:[{data:catVals,backgroundColor:['#0ea5e9','#22c55e','#f59e0b','#7c3aed','#ef4444','#6b7280'],borderWidth:2,borderColor:'#fff'}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:10}},tooltip:{callbacks:{label:ctx=>' '+ctx.label+': '+formatCLP(ctx.raw)}}}}
-  });
-
-  document.getElementById('ventas-count').textContent = `${ventas.length} registros`;
-  const lista = document.getElementById('ventas-lista');
-  if (!ventas.length) {
-    lista.innerHTML = infoHtml + `<div class="empty-dash">📋 Aún no has registrado ventas.<br>Haz clic en "+ Registrar venta ganada" para comenzar.</div>`;
-    return;
-  }
-  const sorted = [...ventas].sort((a,b)=>new Date(b.fecha)-new Date(a.fecha));
-  lista.innerHTML = infoHtml + `<div class="ganadas-list">${sorted.map(v=>`
-  <div class="ganada-row">
-    <div style="min-width:100px;font-family:var(--mono);font-size:10px;color:var(--text3)">${v.codigo||'—'}</div>
-    <div class="ganada-nombre">${v.nombre}<div style="font-size:10px;color:var(--text3);margin-top:1px">${v.organismo||''} · ${v.categoria}</div></div>
-    <div class="ganada-fecha">${formatDate(v.fecha)||v.fecha}</div>
-    <div class="ganada-monto">${formatCLP(v.monto)||'—'}</div>
-    <button onclick="deleteVenta(${v.id})" style="background:none;border:none;cursor:pointer;color:var(--text3);font-size:14px;padding:0 4px" title="Eliminar">✕</button>
-  </div>`).join('')}</div>`;
+  const cv=cats.map(c=>vs.filter(v=>v.cat===c).reduce((s,v)=>s+v.monto,0));
+  if(cCat)cCat.destroy();
+  cCat=new Chart(document.getElementById('chart-cat'),{type:'doughnut',data:{labels:cats,datasets:[{data:cv,backgroundColor:['#0ea5e9','#22c55e','#f59e0b','#7c3aed','#ef4444','#6b7280'],borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:10}},tooltip:{callbacks:{label:c=>' '+c.label+': '+clp(c.raw)}}}}});
+  document.getElementById('v-count').textContent=`${vs.length} registros`;
+  const lista=document.getElementById('v-lista');
+  const infoBox=`<div class="info-box"><span style="font-size:16px;flex-shrink:0">ℹ️</span><div><strong>Nota:</strong> La API de Órdenes de Compra de ChileCompra requiere permisos adicionales por RUT. Para activar la carga automática de tus OC, escribe a <strong>api@chilecompra.cl</strong> solicitando acceso para el RUT 76.200.548-4. Mientras tanto, registra tus ventas manualmente.</div></div>`;
+  if(!vs.length){lista.innerHTML=infoBox+`<div class="empty-d">📋 Aún no has registrado ventas. Haz clic en "+ Registrar venta" para comenzar.</div>`;return;}
+  const sorted=[...vs].sort((a,b)=>new Date(b.fecha)-new Date(a.fecha));
+  lista.innerHTML=infoBox+`<div class="gl">${sorted.map(v=>`<div class="gr"><div style="min-width:95px;font-family:var(--mono);font-size:10px;color:var(--text3)">${v.cod||'—'}</div><div class="gn">${v.nom}<div style="font-size:10px;color:var(--text3)">${v.org||''} · ${v.cat}</div></div><div class="gf">${fdate(v.fecha)||v.fecha}</div><div class="gm">${clp(v.monto)||'—'}</div><button onclick="delV(${v.id})" style="background:none;border:none;cursor:pointer;color:var(--text3);font-size:13px;padding:0 2px">✕</button></div>`).join('')}</div>`;
 }
 
-// ══════════════════════════════════════════
-// COMPETIDORES — datos reales de fichas MP
-// ══════════════════════════════════════════
-function renderChartComp() {
-  // Mostrar datos reales de las fichas en las cards
-  DATOS_COMPETIDORES.forEach((c,i)=>{
-    const elV = document.getElementById(c.elId);
-    const elO = document.getElementById(c.orId);
-    if (elV) elV.innerHTML = `<div class="comp-stat-val green">${formatCLP(c.ventas)}</div>`;
-    if (elO) elO.innerHTML = `<div class="comp-stat-val" style="font-size:11px;color:var(--text3)">dic'24–dic'25</div>`;
-  });
-
-  // Chart comparativo con datos reales + tus ventas registradas
-  const misVentas = loadVentas().reduce((s,v)=>s+v.monto,0);
-  if (chartComp) chartComp.destroy();
-  chartComp = new Chart(document.getElementById('chart-competidores'),{
+// ── Competidores ─────────────────────────
+function renderComp() {
+  const mis=loadV().reduce((s,v)=>s+v.monto,0);
+  if(cComp)cComp.destroy();
+  cComp=new Chart(document.getElementById('chart-comp'),{
     type:'bar',
     data:{
-      labels:['IndexStore (tú)', ...DATOS_COMPETIDORES.map(c=>c.fantasia)],
-      datasets:[{
-        label:'Ventas CLP',
-        data:[misVentas, ...DATOS_COMPETIDORES.map(c=>c.ventas)],
-        backgroundColor:['#0ea5e9', ...DATOS_COMPETIDORES.map(c=>c.color)],
-        borderRadius:6, borderWidth:0
-      }]
+      labels:['IndexStore (tú)','PCTECNO','ASC Parts Chile','RVG Insumos'],
+      datasets:[{label:'Ventas CLP',data:[mis,33778087,25886382,17354522],backgroundColor:['#0ea5e9','#f59e0b','#22c55e','#7c3aed'],borderRadius:6,borderWidth:0}]
     },
-    options:{
-      responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+formatCLP(ctx.raw)}}},
-      scales:{
-        y:{ticks:{callback:v=>'$'+(v/1000000).toFixed(1)+'M'},grid:{color:'rgba(0,0,0,0.04)'}},
-        x:{grid:{display:false}}
-      }
-    }
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' '+clp(c.raw)}}},scales:{y:{ticks:{callback:v=>'$'+(v/1000000).toFixed(1)+'M'},grid:{color:'rgba(0,0,0,.04)'}},x:{grid:{display:false}}}}
   });
 }
 
-const origShowPage = window.showPage;
-window.showPage = function(id, btn) {
-  origShowPage(id, btn);
-  if (id==='competidores') setTimeout(renderChartComp, 50);
-};
-
-// ══════════════════════════════════════════
-// INIT
-// ══════════════════════════════════════════
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('footer-date').textContent = new Date().toLocaleDateString('es-CL',{day:'2-digit',month:'long',year:'numeric'});
+// ── Init ────────────────────────────────
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('fdate').textContent=new Date().toLocaleDateString('es-CL',{day:'2-digit',month:'long',year:'numeric'});
   renderChips();
 });
 </script>
