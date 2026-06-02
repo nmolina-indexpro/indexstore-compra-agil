@@ -278,7 +278,7 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.result-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 6px; }
+.result-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 8px; }
 .result-name { font-size: 13px; font-weight: 500; line-height: 1.45; color: var(--text); flex: 1; }
 .result-monto {
   font-family: var(--mono);
@@ -286,11 +286,40 @@ body {
   font-weight: 500;
   color: var(--navy);
   white-space: nowrap;
-  background: var(--surface2);
-  border: 1px solid var(--border);
+  background: #e0f2fe;
+  border: 1px solid #bae6fd;
   border-radius: 6px;
-  padding: 2px 8px;
+  padding: 3px 10px;
+  align-self: flex-start;
 }
+.result-monto-nd {
+  background: var(--surface2);
+  border-color: var(--border);
+  color: var(--text3);
+  font-size: 11px;
+}
+
+.result-detail-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  margin-bottom: 8px;
+  padding: 8px 10px;
+  background: var(--surface2);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.result-detail-item { display: flex; align-items: baseline; gap: 5px; }
+.detail-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  white-space: nowrap;
+}
+.detail-val { font-size: 12px; color: var(--text2); }
+.detail-val.mono { font-family: var(--mono); color: #0369a1; font-size: 11px; }
 
 .result-tags { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
 .tag {
@@ -540,12 +569,12 @@ const API_BASE = '/api/licitaciones'; // ← proxy serverless Vercel
 const PER_PAGE = 15;
 
 const DEFAULT_KEYWORDS = [
-  'notebook','pantalla notebook','cargador notebook',
-  'batería notebook','MacBook','repuestos notebook',
-  'servicio técnico computacional','pantalla HP',
-  'pantalla Dell','cargador HP','cargador Dell',
-  'monitor','teclado','mouse','SSD','RAM',
-  'kit cámaras seguridad','cámara IP'
+  'cargador',
+  'cargador notebook',
+  'bateria',
+  'batería notebook',
+  'pantalla notebook',
+  'pantalla'
 ];
 
 // ── Estado ───────────────────────────────────────────────────
@@ -647,31 +676,50 @@ function formatDate(str) {
 
 // ── Render ───────────────────────────────────────────────────
 function renderCard(item, idx) {
-  const match  = kwMatch(item);
-  const org    = item.Comprador?.NombreOrganismo || 'Organismo público';
-  const monto  = formatCLP(item.Monto || item.MontoEstimado);
-  const fecha  = formatDate(item.FechaPublicacion || item.FechaCierre);
-  const hoy    = isHoy(item.FechaPublicacion || item.FechaCierre);
-  const codigo = item.CodigoLicitacion || item.Codigo || '';
-  const url    = codigo
+  const match   = kwMatch(item);
+  const org     = item.Comprador?.NombreOrganismo || 'Organismo público';
+  const region  = item.Comprador?.RegionUnidad || item.Comprador?.Region || '';
+  const monto   = formatCLP(item.Monto || item.MontoEstimado);
+  const fecha   = formatDate(item.FechaPublicacion || item.FechaCierre);
+  const fechaCierre = formatDate(item.FechaCierre);
+  const hoy     = isHoy(item.FechaPublicacion || item.FechaCierre);
+  const codigo  = item.CodigoLicitacion || item.Codigo || '';
+  const tipo    = item.Tipo || item.TipoLicitacion || '';
+  const url     = codigo
     ? `https://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?qs=${codigo}`
     : 'https://www.mercadopublico.cl';
-  const delay  = Math.min(idx * 30, 300);
+  const delay   = Math.min(idx * 30, 300);
 
   return `
 <div class="result-card" style="animation-delay:${delay}ms">
   <div class="result-top">
     <div class="result-name">${item.Nombre || 'Sin título'}</div>
-    ${monto ? `<div class="result-monto">${monto}</div>` : ''}
+    ${monto ? `<div class="result-monto">${monto}</div>` : '<div class="result-monto result-monto-nd">Monto n/d</div>'}
+  </div>
+  <div class="result-detail-row">
+    <div class="result-detail-item">
+      <span class="detail-label">ID</span>
+      <span class="detail-val mono">${codigo || '—'}</span>
+    </div>
+    ${org ? `<div class="result-detail-item">
+      <span class="detail-label">Organismo</span>
+      <span class="detail-val">${org}${region ? ` · ${region}` : ''}</span>
+    </div>` : ''}
+    ${fechaCierre ? `<div class="result-detail-item">
+      <span class="detail-label">Cierre</span>
+      <span class="detail-val">${fechaCierre}</span>
+    </div>` : ''}
+    ${tipo ? `<div class="result-detail-item">
+      <span class="detail-label">Tipo</span>
+      <span class="detail-val">${tipo}</span>
+    </div>` : ''}
   </div>
   <div class="result-tags">
-    <span class="tag tag-org">🏛 ${org}</span>
     ${match  ? `<span class="tag tag-match">✓ ${match}</span>` : ''}
     ${hoy    ? `<span class="tag tag-new">HOY</span>` : ''}
     ${fecha  ? `<span class="tag tag-hot">📅 ${fecha}</span>` : ''}
-    ${codigo ? `<span class="tag tag-code">${codigo}</span>` : ''}
     <a href="${url}" target="_blank" rel="noopener" class="btn-mp">
-      Ver en MP
+      Ver detalle completo
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
     </a>
   </div>
