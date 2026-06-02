@@ -324,9 +324,9 @@ footer{text-align:center;padding:1.5rem;font-size:11px;color:var(--text3);border
   <div class="section-hd">
     <div>
       <div class="section-title">Mis ventas en Compra Ágil</div>
-      <div class="section-sub">Últimos 12 meses · Registra manualmente las compras que has ganado</div>
+      <div class="section-sub">Datos reales desde la API de Mercado Público · RUT 76.200.548-4 · últimos 12 meses</div>
     </div>
-    <button class="add-ganada-btn" onclick="openModal()">+ Registrar venta ganada</button>
+    <button class="add-ganada-btn" onclick="renderDashboard()" style="background:var(--accent)">↻ Actualizar datos</button>
   </div>
 
   <!-- KPIs -->
@@ -344,7 +344,7 @@ footer{text-align:center;padding:1.5rem;font-size:11px;color:var(--text3);border
       <div class="chart-wrap"><canvas id="chart-mensual"></canvas></div>
     </div>
     <div class="chart-card">
-      <div class="chart-title">Ventas por categoría</div>
+      <div class="chart-title">Top organismos compradores</div>
       <div class="chart-wrap"><canvas id="chart-categoria"></canvas></div>
     </div>
   </div>
@@ -388,17 +388,16 @@ footer{text-align:center;padding:1.5rem;font-size:11px;color:var(--text3);border
         <span class="habil-badge">✓ Hábil</span>
       </div>
       <div class="comp-stats">
-        <div class="comp-stat"><div class="comp-stat-label">Ventas MP</div><div class="comp-stat-val green">$33.778.087</div></div>
-        <div class="comp-stat"><div class="comp-stat-label">Comportamiento</div><div class="comp-stat-val blue">5/5</div></div>
+        <div class="comp-stat"><div class="comp-stat-label">Ventas MP (12m)</div><div id="comp-ventas-0"><div class="comp-stat-val green">cargando…</div></div></div>
+        <div class="comp-stat"><div class="comp-stat-label">Órdenes (12m)</div><div id="comp-ordenes-0"><div class="comp-stat-val blue">—</div></div></div>
         <div class="comp-stat"><div class="comp-stat-label">RUT</div><div class="comp-stat-val" style="font-size:12px;font-family:var(--mono)">76.342.433-2</div></div>
         <div class="comp-stat"><div class="comp-stat-label">Tipo empresa</div><div class="comp-stat-val" style="font-size:12px">EMT ✓</div></div>
       </div>
       <div class="comp-meta">
         <div class="comp-meta-row"><span class="comp-meta-key">Domicilio</span><span class="comp-meta-val">Nva Amunategui 1405 DP 301, Santiago, RM</span></div>
         <div class="comp-meta-row"><span class="comp-meta-key">Acreditado</span><span class="comp-meta-val">Hasta 21-10-2025</span></div>
-        <div class="comp-meta-row"><span class="comp-meta-key">Período</span><span class="comp-meta-val">Dic 2024 – Dic 2025</span></div>
       </div>
-      <div class="comp-insight">⚠️ Principal competidor: $33,7M en ventas MP. Acreditación vencida oct-2025, verificar habilidad actual.</div>
+      <div class="comp-insight">⚠️ Principal competidor en RM. Acreditación vencida oct-2025, verificar habilidad actual.</div>
       <div class="comp-footer">
         <div class="score-bar"><span class="score-label">Comportamiento</span><div class="score-dots"><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div></div></div>
         <a href="https://www.mercadopublico.cl/Supplier/Modules/SupplierDetails/SupplierDetails.aspx?qs=76.342.433-2" target="_blank" class="btn-ver-mp">Ver en MP ↗</a>
@@ -416,17 +415,16 @@ footer{text-align:center;padding:1.5rem;font-size:11px;color:var(--text3);border
         <span class="habil-badge">✓ Hábil</span>
       </div>
       <div class="comp-stats">
-        <div class="comp-stat"><div class="comp-stat-label">Ventas MP</div><div class="comp-stat-val green">$25.886.382</div></div>
-        <div class="comp-stat"><div class="comp-stat-label">Comportamiento</div><div class="comp-stat-val blue">5/5</div></div>
+        <div class="comp-stat"><div class="comp-stat-label">Ventas MP (12m)</div><div id="comp-ventas-1"><div class="comp-stat-val green">cargando…</div></div></div>
+        <div class="comp-stat"><div class="comp-stat-label">Órdenes (12m)</div><div id="comp-ordenes-1"><div class="comp-stat-val blue">—</div></div></div>
         <div class="comp-stat"><div class="comp-stat-label">RUT</div><div class="comp-stat-val" style="font-size:12px;font-family:var(--mono)">76.151.037-1</div></div>
         <div class="comp-stat"><div class="comp-stat-label">Tipo empresa</div><div class="comp-stat-val" style="font-size:12px">EMT ✓</div></div>
       </div>
       <div class="comp-meta">
         <div class="comp-meta-row"><span class="comp-meta-key">Domicilio</span><span class="comp-meta-val">Exequiel Fernández 3663, Macul, Santiago, RM</span></div>
         <div class="comp-meta-row"><span class="comp-meta-key">Acreditado</span><span class="comp-meta-val">Hasta 19-05-2026</span></div>
-        <div class="comp-meta-row"><span class="comp-meta-key">Período</span><span class="comp-meta-val">Dic 2024 – Dic 2025</span></div>
       </div>
-      <div class="comp-insight">📍 Ubicado en Macul (zona cercana). Acreditación vigente mayo-2026. Ventas sólidas $25,8M.</div>
+      <div class="comp-insight">📍 Ubicado en Macul (zona cercana). Acreditación vigente mayo-2026.</div>
       <div class="comp-footer">
         <div class="score-bar"><span class="score-label">Comportamiento</span><div class="score-dots"><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div></div></div>
         <a href="https://www.mercadopublico.cl/Supplier/Modules/SupplierDetails/SupplierDetails.aspx?qs=76.151.037-1" target="_blank" class="btn-ver-mp">Ver en MP ↗</a>
@@ -444,17 +442,16 @@ footer{text-align:center;padding:1.5rem;font-size:11px;color:var(--text3);border
         <span class="habil-badge">✓ Hábil</span>
       </div>
       <div class="comp-stats">
-        <div class="comp-stat"><div class="comp-stat-label">Ventas MP</div><div class="comp-stat-val green">$17.354.522</div></div>
-        <div class="comp-stat"><div class="comp-stat-label">Comportamiento</div><div class="comp-stat-val amber">4,99/5</div></div>
+        <div class="comp-stat"><div class="comp-stat-label">Ventas MP (12m)</div><div id="comp-ventas-2"><div class="comp-stat-val green">cargando…</div></div></div>
+        <div class="comp-stat"><div class="comp-stat-label">Órdenes (12m)</div><div id="comp-ordenes-2"><div class="comp-stat-val blue">—</div></div></div>
         <div class="comp-stat"><div class="comp-stat-label">RUT</div><div class="comp-stat-val" style="font-size:12px;font-family:var(--mono)">77.910.877-5</div></div>
         <div class="comp-stat"><div class="comp-stat-label">Tipo empresa</div><div class="comp-stat-val" style="font-size:12px">EMT ✓</div></div>
       </div>
       <div class="comp-meta">
         <div class="comp-meta-row"><span class="comp-meta-key">Domicilio</span><span class="comp-meta-val">Calle 3 Poniente 0157, San Andrés, Talca, Maule</span></div>
         <div class="comp-meta-row"><span class="comp-meta-key">Acreditado</span><span class="comp-meta-val">Hasta 17-04-2026</span></div>
-        <div class="comp-meta-row"><span class="comp-meta-key">Período</span><span class="comp-meta-val">Dic 2024 – Dic 2025</span></div>
       </div>
-      <div class="comp-insight">📍 Región del Maule — menor competencia en RM. Ventas $17,3M. Acreditación vigente abr-2026.</div>
+      <div class="comp-insight">📍 Región del Maule — menor competencia directa en RM.</div>
       <div class="comp-footer">
         <div class="score-bar"><span class="score-label">Comportamiento</span><div class="score-dots"><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on" style="opacity:.5"></div></div></div>
         <a href="https://www.mercadopublico.cl/Supplier/Modules/SupplierDetails/SupplierDetails.aspx?qs=77.910.877-5" target="_blank" class="btn-ver-mp">Ver en MP ↗</a>
@@ -793,24 +790,84 @@ window.deleteVenta=deleteVenta;
 
 let chartMensual=null, chartCategoria=null, chartComp=null;
 
-function renderDashboard() {
-  const ventas = loadVentas();
-  const total  = ventas.reduce((s,v)=>s+v.monto,0);
-  const ticket = ventas.length ? Math.round(total/ventas.length) : 0;
+// ══════════════════════════════════════════
+// HELPERS API REAL
+// ══════════════════════════════════════════
+const RUT_INDEXSTORE   = '76.200.548-4';
+const COMPETIDORES_DEF = [
+  { rut:'76.342.433-2', nombre:'Globat Inversiones', fantasia:'PCTECNO',        color:'#f59e0b', elId:'comp-ventas-0' },
+  { rut:'76.151.037-1', nombre:'ASC Parts Chile S.A.',fantasia:'ASC PARTS CHILE',color:'#22c55e', elId:'comp-ventas-1' },
+  { rut:'77.910.877-5', nombre:'RVG Insumos SPA',    fantasia:'RVG INSUMOS',    color:'#7c3aed', elId:'comp-ventas-2' },
+];
 
-  // KPIs
+// Caché en memoria por sesión
+const _cache = {};
+async function getRutCodigo(rut) {
+  if (_cache['cod_'+rut]) return _cache['cod_'+rut];
+  const r = await fetch(`/api/proveedor?rut=${encodeURIComponent(rut)}`,{signal:AbortSignal.timeout(10000)});
+  if (!r.ok) return null;
+  const d = await r.json();
+  const codigo = d.CodigoEmpresa || d.Codigo || (d.Listado&&d.Listado[0]?.CodigoEmpresa) || null;
+  if (codigo) _cache['cod_'+rut] = codigo;
+  return codigo;
+}
+
+async function getOrdenesProveedor(rut) {
+  if (_cache['oc_'+rut]) return _cache['oc_'+rut];
+  const codigo = await getRutCodigo(rut);
+  if (!codigo) return { total:0, monto:0, ordenes:[], codigo:null };
+  const r = await fetch(`/api/ordenes?codigoProveedor=${codigo}&dias=365`,{signal:AbortSignal.timeout(65000)});
+  if (!r.ok) return { total:0, monto:0, ordenes:[], codigo };
+  const d = await r.json();
+  const result = { total:d.TotalOrdenes||0, monto:d.TotalMonto||0, ordenes:d.Listado||[], codigo };
+  _cache['oc_'+rut] = result;
+  return result;
+}
+
+function setLoading(el, msg='Cargando datos reales...') {
+  el.innerHTML = `<div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text3);padding:4px 0"><div class="spinner" style="width:16px;height:16px;border-width:2px;margin:0"></div>${msg}</div>`;
+}
+
+// ══════════════════════════════════════════
+// DASHBOARD — carga real desde API MP
+// ══════════════════════════════════════════
+async function renderDashboard() {
+  // Mostrar loading en KPIs
+  ['kpi-total','kpi-ordenes','kpi-ticket','kpi-mejor-mes'].forEach(id=>{
+    document.getElementById(id).innerHTML=`<span style="font-size:13px;color:var(--text3)">cargando…</span>`;
+  });
+  const lista = document.getElementById('ventas-lista');
+  lista.innerHTML=`<div style="padding:1.5rem;text-align:center"><div class="spinner"></div><p style="font-size:12px;color:var(--text3);margin-top:8px">Consultando órdenes de compra reales de IndexStore en Mercado Público…<br><span style="font-size:11px">Este proceso puede tomar hasta 60 segundos la primera vez.</span></p></div>`;
+
+  let ordenes = [], totalMonto = 0;
+  try {
+    const data = await getOrdenesProveedor(RUT_INDEXSTORE);
+    ordenes     = data.ordenes;
+    totalMonto  = data.monto;
+  } catch(e) {
+    lista.innerHTML=`<div class="empty-dash">⚠️ No se pudo obtener datos desde la API.<br><small>${e.message}</small></div>`;
+  }
+
+  const total  = totalMonto;
+  const ticket = ordenes.length ? Math.round(total/ordenes.length) : 0;
+
   document.getElementById('kpi-total').textContent   = formatCLP(total)||'$0';
-  document.getElementById('kpi-ordenes').textContent = ventas.length;
+  document.getElementById('kpi-ordenes').textContent = ordenes.length;
   document.getElementById('kpi-ticket').textContent  = formatCLP(ticket)||'$0';
 
-  // Mejor mes
+  // Agrupar por mes
   const porMes = {};
-  ventas.forEach(v=>{ const k=v.fecha.slice(0,7); porMes[k]=(porMes[k]||0)+v.monto; });
+  ordenes.forEach(oc=>{
+    const fecha = oc.FechaCreacion||oc.Fecha||oc.FechaEnvio||'';
+    if (!fecha) return;
+    const k = fecha.slice(0,7);
+    const m = parseFloat(oc.Monto||oc.Total||oc.MontoTotal||0);
+    if (!isNaN(m)) porMes[k] = (porMes[k]||0)+m;
+  });
   const mejorMes = Object.entries(porMes).sort((a,b)=>b[1]-a[1])[0];
   if (mejorMes) {
     const [y,m] = mejorMes[0].split('-');
-    const nombre = new Date(y,m-1,1).toLocaleDateString('es-CL',{month:'long',year:'numeric'});
-    document.getElementById('kpi-mejor-mes').textContent = nombre;
+    document.getElementById('kpi-mejor-mes').textContent = new Date(y,m-1,1).toLocaleDateString('es-CL',{month:'long',year:'numeric'});
     document.getElementById('kpi-mejor-val').textContent = formatCLP(mejorMes[1]);
   } else {
     document.getElementById('kpi-mejor-mes').textContent = '—';
@@ -818,75 +875,94 @@ function renderDashboard() {
   }
 
   // Chart mensual
-  const meses = Array.from({length:12},(_,i)=>{
-    const d = new Date(); d.setMonth(d.getMonth()-11+i);
-    return d.toISOString().slice(0,7);
-  });
-  const ventasMes = meses.map(m=>ventas.filter(v=>v.fecha.startsWith(m)).reduce((s,v)=>s+v.monto,0));
-  const labMeses  = meses.map(m=>{ const [y,mo]=m.split('-'); return new Date(y,mo-1,1).toLocaleDateString('es-CL',{month:'short'}); });
+  const meses = Array.from({length:12},(_,i)=>{ const d=new Date(); d.setMonth(d.getMonth()-11+i); return d.toISOString().slice(0,7); });
+  const ventasMes = meses.map(mes=>ordenes.reduce((s,oc)=>{
+    const f=oc.FechaCreacion||oc.Fecha||oc.FechaEnvio||'';
+    return f.startsWith(mes)?s+parseFloat(oc.Monto||oc.Total||0):s;
+  },0));
+  const labMeses = meses.map(m=>{ const [y,mo]=m.split('-'); return new Date(y,mo-1,1).toLocaleDateString('es-CL',{month:'short'}); });
 
   if (chartMensual) chartMensual.destroy();
   chartMensual = new Chart(document.getElementById('chart-mensual'),{
     type:'bar',
-    data:{ labels:labMeses, datasets:[{data:ventasMes,backgroundColor:'rgba(14,165,233,0.7)',borderColor:'#0ea5e9',borderWidth:1,borderRadius:4}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{ticks:{callback:v=>v>=1000000?'$'+(v/1000000).toFixed(1)+'M':'$'+v.toLocaleString('es-CL')},grid:{color:'rgba(0,0,0,0.04)'}},x:{grid:{display:false}}}}
+    data:{ labels:labMeses, datasets:[{data:ventasMes,backgroundColor:'rgba(14,165,233,0.7)',borderColor:'#0ea5e9',borderWidth:1,borderRadius:4,label:'Ventas CLP'}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>'  '+formatCLP(ctx.raw)}}},scales:{y:{ticks:{callback:v=>v>=1000000?'$'+(v/1000000).toFixed(1)+'M':v>0?'$'+Math.round(v/1000)+'K':'$0'},grid:{color:'rgba(0,0,0,0.04)'}},x:{grid:{display:false}}}}
   });
 
-  // Chart categoría
-  const cats = ['Pantallas','Cargadores','Baterías','Servicio técnico','Periféricos','Otro'];
-  const catVals = cats.map(c=>ventas.filter(v=>v.categoria===c).reduce((s,v)=>s+v.monto,0));
+  // Chart por organismo (top 6)
+  const porOrg = {};
+  ordenes.forEach(oc=>{ const o=oc.Comprador?.NombreOrganismo||oc.NombreOrganismo||'Otro'; const m=parseFloat(oc.Monto||oc.Total||0); if(!isNaN(m)&&m>0) porOrg[o]=(porOrg[o]||0)+m; });
+  const topOrg = Object.entries(porOrg).sort((a,b)=>b[1]-a[1]).slice(0,6);
   if (chartCategoria) chartCategoria.destroy();
   chartCategoria = new Chart(document.getElementById('chart-categoria'),{
     type:'doughnut',
-    data:{ labels:cats, datasets:[{data:catVals,backgroundColor:['#0ea5e9','#22c55e','#f59e0b','#7c3aed','#ef4444','#6b7280'],borderWidth:2,borderColor:'#fff'}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}}}}
+    data:{ labels:topOrg.map(x=>x[0].length>20?x[0].slice(0,20)+'…':x[0]), datasets:[{data:topOrg.map(x=>x[1]),backgroundColor:['#0ea5e9','#22c55e','#f59e0b','#7c3aed','#ef4444','#6b7280'],borderWidth:2,borderColor:'#fff'}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:10}},tooltip:{callbacks:{label:ctx=>' '+ctx.label+': '+formatCLP(ctx.raw)}}}}
   });
 
-  // Lista ventas
-  document.getElementById('ventas-count').textContent = `${ventas.length} registros`;
-  const lista = document.getElementById('ventas-lista');
-  if (!ventas.length) {
-    lista.innerHTML='<div class="empty-dash">📋 Aún no has registrado ventas.<br>Haz clic en "+ Registrar venta ganada" para comenzar.</div>';
+  // Tabla OC
+  document.getElementById('ventas-count').textContent = `${ordenes.length} órdenes de compra`;
+  if (!ordenes.length) {
+    lista.innerHTML='<div class="empty-dash">Sin órdenes de compra en los últimos 12 meses según la API de Mercado Público.</div>';
     return;
   }
-  const sorted = [...ventas].sort((a,b)=>new Date(b.fecha)-new Date(a.fecha));
-  lista.innerHTML = `<div class="ganadas-list">${sorted.map(v=>`
-  <div class="ganada-row">
-    <div style="min-width:100px;font-family:var(--mono);font-size:10px;color:var(--text3)">${v.codigo||'—'}</div>
-    <div class="ganada-nombre">${v.nombre}<div style="font-size:10px;color:var(--text3);margin-top:1px">${v.organismo||''} · ${v.categoria}</div></div>
-    <div class="ganada-fecha">${formatDate(v.fecha)||v.fecha}</div>
-    <div class="ganada-monto">${formatCLP(v.monto)||'—'}</div>
-    <button onclick="deleteVenta(${v.id})" style="background:none;border:none;cursor:pointer;color:var(--text3);font-size:14px;padding:0 4px" title="Eliminar">✕</button>
-  </div>`).join('')}</div>`;
+  const sorted = [...ordenes].sort((a,b)=>new Date(b.FechaCreacion||b.Fecha||0)-new Date(a.FechaCreacion||a.Fecha||0));
+  lista.innerHTML=`<div class="ganadas-list">${sorted.slice(0,50).map(oc=>{
+    const cod  = oc.CodigoOC||oc.Codigo||oc.ID||'—';
+    const nom  = oc.Nombre||oc.NombreProducto||oc.Descripcion||'Orden de compra';
+    const org  = oc.Comprador?.NombreOrganismo||oc.NombreOrganismo||'—';
+    const fech = formatDate(oc.FechaCreacion||oc.Fecha||oc.FechaEnvio||'');
+    const mnt  = formatCLP(oc.Monto||oc.Total||oc.MontoTotal||0);
+    return `<div class="ganada-row">
+      <div style="min-width:110px;font-family:var(--mono);font-size:10px;color:var(--text3)">${cod}</div>
+      <div class="ganada-nombre">${nom}<div style="font-size:10px;color:var(--text3);margin-top:1px">${org}</div></div>
+      <div class="ganada-fecha">${fech||'—'}</div>
+      <div class="ganada-monto">${mnt||'—'}</div>
+    </div>`;
+  }).join('')}${ordenes.length>50?`<div style="text-align:center;font-size:11px;color:var(--text3);padding:8px">Mostrando 50 de ${ordenes.length} órdenes</div>`:''}</div>`;
 }
 
 // ══════════════════════════════════════════
-// CHART COMPETIDORES
+// COMPETIDORES — datos en tiempo real
 // ══════════════════════════════════════════
-function renderChartComp() {
-  const ventas = loadVentas();
-  const totalIndexStore = ventas.reduce((s,v)=>s+v.monto,0);
+async function cargarCompetidor(idx) {
+  const comp = COMPETIDORES_DEF[idx];
+  const elVentas = document.getElementById(comp.elId);
+  const elOrdenes= document.getElementById('comp-ordenes-'+idx);
+  if (elVentas) setLoading(elVentas,'Consultando API…');
+
+  try {
+    const data = await getOrdenesProveedor(comp.rut);
+    if (elVentas)  elVentas.innerHTML  = `<div class="comp-stat-val green">${formatCLP(data.monto)||'$0'}</div>`;
+    if (elOrdenes) elOrdenes.innerHTML = `<div class="comp-stat-val blue">${data.total}</div>`;
+    COMPETIDORES_DEF[idx]._monto = data.monto;
+    COMPETIDORES_DEF[idx]._total = data.total;
+  } catch {
+    if (elVentas) elVentas.innerHTML = `<div style="font-size:11px;color:var(--text3)">Error API</div>`;
+  }
+  // Actualizar chart comparativo si ya está cargado
+  if (chartComp) updateChartComp();
+}
+
+function updateChartComp() {
+  const myData  = _cache['oc_'+RUT_INDEXSTORE];
+  const myMonto = myData ? myData.monto : 0;
+  const labels  = ['IndexStore (tú)', ...COMPETIDORES_DEF.map(c=>c.fantasia)];
+  const values  = [myMonto, ...COMPETIDORES_DEF.map(c=>c._monto||0)];
+  const colors  = ['#0ea5e9', ...COMPETIDORES_DEF.map(c=>c.color)];
   if (chartComp) chartComp.destroy();
   chartComp = new Chart(document.getElementById('chart-competidores'),{
     type:'bar',
-    data:{
-      labels:['IndexStore (tú)','PCTECNO\n(Globat)','ASC Parts Chile','RVG Insumos'],
-      datasets:[{
-        label:'Ventas CLP',
-        data:[totalIndexStore, 33778087, 25886382, 17354522],
-        backgroundColor:['#0ea5e9','#f59e0b','#22c55e','#7c3aed'],
-        borderRadius:6, borderWidth:0
-      }]
-    },
-    options:{
-      responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false}},
-      scales:{
-        y:{ticks:{callback:v=>'$'+(v/1000000).toFixed(1)+'M'},grid:{color:'rgba(0,0,0,0.04)'}},
-        x:{grid:{display:false}}
-      }
-    }
+    data:{ labels, datasets:[{label:'Ventas CLP (12 meses)',data:values,backgroundColor:colors,borderRadius:6,borderWidth:0}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>' '+formatCLP(ctx.raw)}}},scales:{y:{ticks:{callback:v=>'$'+(v/1000000).toFixed(1)+'M'},grid:{color:'rgba(0,0,0,0.04)'}},x:{grid:{display:false}}}}
   });
+}
+
+async function renderChartComp() {
+  // Inicializar chart con datos vacíos y cargar en paralelo
+  updateChartComp();
+  // Cargar cada competidor en paralelo (no bloqueante)
+  COMPETIDORES_DEF.forEach((_,i) => cargarCompetidor(i));
 }
 
 // Renderizar chart competidores cuando se muestra esa página
